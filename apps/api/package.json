@@ -5,7 +5,11 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "@squd-in/auth": "/workspace:*"
+    "@fastify/cors": "^11.0.0",
+    "@squd-in/auth": "/workspace:*",
+    "fastify": "^5.2.1",
+    "fastify-type-provider-zod": "^4.0.2",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@squd-in/tsconfig": "/workspace:*",
