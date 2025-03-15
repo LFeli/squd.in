@@ -1,4 +1,6 @@
-import { ability } from '@squd-in/auth'
+import { defineAbilityFor } from '@squd-in/auth'
+
+const ability = defineAbilityFor({ role: 'MEMBER' })
 
 const userCanInviteSomeoneElse = ability.can('invite', 'User')
 const userCanDeleteOthersUsers = ability.can('delete', 'User')
