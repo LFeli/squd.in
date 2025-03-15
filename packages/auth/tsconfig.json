@@ -1,0 +1,4 @@
+{
+  "extends": "@squd-in/tsconfig/library.json",
+  "include": ["src/**/*"]
+}
