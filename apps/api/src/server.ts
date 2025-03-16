@@ -9,12 +9,15 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
+import { errorHandler } from './http/error-handler'
 import { registeredRoutes } from './http/routes/registered-routes'
 
 // fastify app instance + type provider of zod
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
+
+app.setErrorHandler(errorHandler)
 
 app.register(fastifyJwt, {
   secret: 'my-super-secret-key',
