@@ -1,4 +1,5 @@
 import fastifyCors from '@fastify/cors'
+import { fastifyJwt } from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
 import fastify from 'fastify'
@@ -14,6 +15,10 @@ import { registeredRoutes } from './http/routes/registered-routes'
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
+
+app.register(fastifyJwt, {
+  secret: 'my-super-secret-key',
+})
 
 app.register(fastifyCors, {
   origin: 'http://localhost:3000',

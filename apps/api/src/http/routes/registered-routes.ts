@@ -1,4 +1,6 @@
 import type { FastifyInstance } from 'fastify'
+
+import { authenticateWithPassword } from './auth/authenticate-with-password'
 import { createAccount } from './auth/create-account'
 
 export async function registeredRoutes(app: FastifyInstance) {
@@ -8,4 +10,5 @@ export async function registeredRoutes(app: FastifyInstance) {
 
   // auth routes
   app.register(createAccount)
+  app.register(authenticateWithPassword)
 }
