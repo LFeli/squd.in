@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "db:init": "npx prisma init",
-    "db:migrate": "npx prisma migrate dev"
+    "db:migrate": "npx prisma migrate dev",
+    "db:seed": "npx prisma db seed"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.0",
@@ -18,10 +19,14 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
     "@squd-in/tsconfig": "/workspace:*",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.13.10",
     "prisma": "^6.5.0",
     "tsx": "^4.19.3"
+  },
+  "prisma" : {
+    "seed": "tsx prisma/seed.ts"
   }
 }
