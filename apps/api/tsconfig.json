@@ -1,6 +1,6 @@
 {
   "extends": "@squd-in/tsconfig/node.json",
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "@types/*.d.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
