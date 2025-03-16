@@ -5,7 +5,8 @@
     "dev": "tsx watch src/server.ts",
     "db:init": "npx prisma init",
     "db:migrate": "npx prisma migrate dev",
-    "db:seed": "npx prisma db seed"
+    "db:seed": "npx prisma db seed",
+    "db:studio": "npx prisma studio"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.0",
