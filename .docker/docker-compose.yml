@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: squd_in_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=squd_in
