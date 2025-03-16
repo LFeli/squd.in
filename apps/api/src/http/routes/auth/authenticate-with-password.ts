@@ -1,4 +1,4 @@
-import { prisma } from '@/http/lib/prisma'
+import { prisma } from '@/lib/prisma'
 import { compare } from 'bcryptjs'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import type { FastifyInstance } from 'fastify/types/instance'

@@ -2,7 +2,7 @@ import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 
-import { prisma } from '@/http/lib/prisma'
+import { prisma } from '@/lib/prisma'
 import { hash } from 'bcryptjs'
 import { BadRequestError } from '../_erros/bad-request-error'
 
