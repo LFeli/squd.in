@@ -6,6 +6,7 @@ import { createAccount } from './auth/create-account'
 import { getProfile } from './auth/get-profile'
 import { requestPasswordRecover } from './auth/request-password-recover'
 import { resetPassword } from './auth/reset-password'
+import { createOrganization } from './orgs/create-organization'
 
 export async function registeredRoutes(app: FastifyInstance) {
   app.get('/docs/swagger', async (_, reply) => {
@@ -19,4 +20,7 @@ export async function registeredRoutes(app: FastifyInstance) {
   app.register(requestPasswordRecover)
   app.register(resetPassword)
   app.register(getProfile)
+
+  // organization routes
+  app.register(createOrganization)
 }
