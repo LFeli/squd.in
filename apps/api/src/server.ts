@@ -2,6 +2,7 @@ import fastifyCors from '@fastify/cors'
 import { fastifyJwt } from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
+import { env } from '@squd-in/env'
 import fastify from 'fastify'
 import {
   type ZodTypeProvider,
@@ -20,11 +21,11 @@ app.setValidatorCompiler(validatorCompiler)
 app.setErrorHandler(errorHandler)
 
 app.register(fastifyJwt, {
-  secret: 'my-super-secret-key',
+  secret: env.JWT_SECRET,
 })
 
 app.register(fastifyCors, {
-  origin: 'http://localhost:3000',
+  origin: env.FRONT_END_URL,
 })
 
 // generate swagger docs and ui
@@ -32,7 +33,17 @@ app.register(fastifySwagger, {
   openapi: {
     info: {
       title: 'squd_in',
+      description: 'Full-stack SaaS with multi-tenant & RBAC.',
       version: '0.0.1',
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
     },
   },
 
@@ -44,6 +55,6 @@ app.register(fastifySwaggerUi, {
 
 registeredRoutes(app)
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('HTTP server is running... 🚀')
 })
