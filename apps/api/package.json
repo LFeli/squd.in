@@ -2,11 +2,12 @@
   "name": "@squd-in/api",
   "version": "0.0.0",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "db:init": "npx prisma init",
-    "db:migrate": "npx prisma migrate dev",
-    "db:seed": "npx prisma db seed",
-    "db:studio": "npx prisma studio"
+    "dev": "npm run  env:load tsx watch src/server.ts",
+    "db:init": "npm run env:load prisma init",
+    "db:migrate": "npm run env:load prisma migrate dev",
+    "db:seed": "npm run env:load prisma db seed",
+    "db:studio": "npm run env:load prisma studio",
+    "env:load": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.0",
@@ -15,6 +16,7 @@
     "@fastify/swagger-ui": "^5.2.2",
     "@prisma/client": "^6.5.0",
     "@squd-in/auth": "/workspace:*",
+    "@squd-in/env": "/workspace:*",
     "bcryptjs": "^3.0.2",
     "fastify": "^5.2.1",
     "fastify-plugin": "^5.0.1",
@@ -26,10 +28,11 @@
     "@squd-in/tsconfig": "/workspace:*",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.13.10",
+    "dotenv-cli": "^8.0.0",
     "prisma": "^6.5.0",
     "tsx": "^4.19.3"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "npm run  env:load tsx prisma/seed.ts"
   }
 }
