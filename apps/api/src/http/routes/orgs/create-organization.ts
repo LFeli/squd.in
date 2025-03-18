@@ -13,7 +13,7 @@ export async function createOrganization(app: FastifyInstance) {
     .withTypeProvider<ZodTypeProvider>()
     .register(authMiddleware)
     .post(
-      '/organization',
+      '/organizations',
       {
         schema: {
           tags: ['Organizations'],
