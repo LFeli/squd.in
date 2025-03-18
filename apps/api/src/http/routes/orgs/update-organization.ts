@@ -47,10 +47,8 @@ export async function updateOrganization(app: FastifyInstance) {
           await request.getUserMembership(slug)
 
         const authOrganization = organizationSchema.parse(organization)
-        console.log('\n\nauthOrganization', authOrganization, userID)
-
         const { cannot } = getUserPermissions(userID, membership.role)
-        console.log('\ncannot', cannot('update', authOrganization))
+
         if (cannot('update', authOrganization)) {
           throw new UnauthorizedError(
             "You're not allowed to update this organization"
