@@ -8,6 +8,8 @@ import { requestPasswordRecover } from './auth/request-password-recover'
 import { resetPassword } from './auth/reset-password'
 import { createOrganization } from './orgs/create-organization'
 import { getMembership } from './orgs/get-membership'
+import { getOrganizationDetails } from './orgs/get-organization-details'
+import { getOrganizations } from './orgs/get-organizations'
 
 export async function registeredRoutes(app: FastifyInstance) {
   app.get('/docs/swagger', async (_, reply) => {
@@ -25,4 +27,6 @@ export async function registeredRoutes(app: FastifyInstance) {
   // organization routes
   app.register(createOrganization)
   app.register(getMembership)
+  app.register(getOrganizationDetails)
+  app.register(getOrganizations)
 }
