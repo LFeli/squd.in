@@ -39,10 +39,7 @@ export async function shutdownOrganization(app: FastifyInstance) {
         const { membership, organization } =
           await request.getUserMembership(slug)
 
-        const authOrganization = organizationSchema.parse({
-          id: organization.id,
-          ownerId: organization.ownerId,
-        })
+        const authOrganization = organizationSchema.parse(organization)
 
         const { cannot } = getUserPermissions(userID, membership.role)
 
