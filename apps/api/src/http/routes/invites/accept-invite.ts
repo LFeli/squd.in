@@ -3,7 +3,6 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 
 import { prisma } from '@/lib/prisma'
-import { rolesSchema } from '@squd-in/auth'
 
 import { authMiddleware } from '@/http/middlewares/auth'
 import { BadRequestError } from '../_erros/bad-request-error'
