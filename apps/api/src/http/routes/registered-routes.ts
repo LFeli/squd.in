@@ -8,6 +8,7 @@ import { requestPasswordRecover } from './auth/request-password-recover'
 import { resetPassword } from './auth/reset-password'
 import { createInvite } from './invites/create-invite'
 import { getInvitesDetails } from './invites/get-invite-details'
+import { getInvites } from './invites/get-invites'
 import { getOrganizationMembers } from './members/get-organization-members'
 import { removeMember } from './members/remove-member'
 import { updateMember } from './members/update-member'
@@ -59,6 +60,7 @@ export async function registeredRoutes(app: FastifyInstance) {
   app.register(removeMember)
 
   // invites routes
-  app.register(createInvite)
   app.register(getInvitesDetails)
+  app.register(getInvites)
+  app.register(createInvite)
 }
