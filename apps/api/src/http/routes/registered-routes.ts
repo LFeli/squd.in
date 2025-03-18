@@ -10,6 +10,7 @@ import { createOrganization } from './orgs/create-organization'
 import { getMembership } from './orgs/get-membership'
 import { getOrganizationDetails } from './orgs/get-organization-details'
 import { getOrganizations } from './orgs/get-organizations'
+import { updateOrganization } from './orgs/update-organization'
 
 export async function registeredRoutes(app: FastifyInstance) {
   app.get('/docs/swagger', async (_, reply) => {
@@ -25,8 +26,9 @@ export async function registeredRoutes(app: FastifyInstance) {
   app.register(getProfile)
 
   // organization routes
-  app.register(createOrganization)
   app.register(getMembership)
   app.register(getOrganizationDetails)
   app.register(getOrganizations)
+  app.register(createOrganization)
+  app.register(updateOrganization)
 }
