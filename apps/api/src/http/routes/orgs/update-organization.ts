@@ -14,7 +14,7 @@ export async function updateOrganization(app: FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .register(authMiddleware)
-    .post(
+    .put(
       '/organizations/:slug',
       {
         schema: {
@@ -46,13 +46,11 @@ export async function updateOrganization(app: FastifyInstance) {
         const { membership, organization } =
           await request.getUserMembership(slug)
 
-        const authOrganization = organizationSchema.parse({
-          id: organization.id,
-          ownerID: organization.ownerId,
-        })
+        const authOrganization = organizationSchema.parse(organization)
+        console.log('\n\nauthOrganization', authOrganization, userID)
 
         const { cannot } = getUserPermissions(userID, membership.role)
-
+        console.log('\ncannot', cannot('update', authOrganization))
         if (cannot('update', authOrganization)) {
           throw new UnauthorizedError(
             "You're not allowed to update this organization"
