@@ -10,6 +10,7 @@ import { acceptInvite } from './invites/accept-invite'
 import { createInvite } from './invites/create-invite'
 import { getInvitesDetails } from './invites/get-invite-details'
 import { getInvites } from './invites/get-invites'
+import { getPendingInvites } from './invites/get-pending-invites'
 import { rejectInvite } from './invites/reject-invite'
 import { revokeInvite } from './invites/revoke-invite'
 import { getOrganizationMembers } from './members/get-organization-members'
@@ -65,6 +66,7 @@ export async function registeredRoutes(app: FastifyInstance) {
   // invites routes
   app.register(getInvitesDetails)
   app.register(getInvites)
+  app.register(getPendingInvites)
   app.register(createInvite)
   app.register(acceptInvite)
   app.register(rejectInvite)
