@@ -13,6 +13,7 @@ import { getOrganizations } from './orgs/get-organizations'
 import { shutdownOrganization } from './orgs/shutdown-organization'
 import { transferOrganization } from './orgs/transfer-organization'
 import { updateOrganization } from './orgs/update-organization'
+import { createProject } from './projects/create-project'
 
 export async function registeredRoutes(app: FastifyInstance) {
   app.get('/docs/swagger', async (_, reply) => {
@@ -35,4 +36,7 @@ export async function registeredRoutes(app: FastifyInstance) {
   app.register(updateOrganization)
   app.register(shutdownOrganization)
   app.register(transferOrganization)
+
+  // project routes
+  app.register(createProject)
 }
