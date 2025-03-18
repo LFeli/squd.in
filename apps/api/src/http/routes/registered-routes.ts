@@ -6,6 +6,7 @@ import { createAccount } from './auth/create-account'
 import { getProfile } from './auth/get-profile'
 import { requestPasswordRecover } from './auth/request-password-recover'
 import { resetPassword } from './auth/reset-password'
+import { acceptInvite } from './invites/accept-invite'
 import { createInvite } from './invites/create-invite'
 import { getInvitesDetails } from './invites/get-invite-details'
 import { getInvites } from './invites/get-invites'
@@ -63,4 +64,5 @@ export async function registeredRoutes(app: FastifyInstance) {
   app.register(getInvitesDetails)
   app.register(getInvites)
   app.register(createInvite)
+  app.register(acceptInvite)
 }
