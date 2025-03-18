@@ -14,15 +14,15 @@ export const permissions: Record<Role, PermissionsByRole> = {
     builder.can('manage', 'all')
 
     builder.cannot(['transfer_ownership', 'update'], 'Organization')
-    builder.cannot(['transfer_ownership', 'update'], 'Organization', {
-      ownerID: { $eq: user.id },
+    builder.can(['transfer_ownership', 'update'], 'Organization', {
+      ownerId: { $eq: user.id },
     })
   },
   MEMBER: (user, builder) => {
     builder.can('get', 'User')
 
     builder.can(['create', 'get'], 'Project')
-    builder.can(['update', 'delete'], 'Project', { ownerID: user.id })
+    builder.can(['update', 'delete'], 'Project', { ownerId: user.id })
   },
   BILLING: (_, builder) => {
     builder.can('manage', 'Billing')
