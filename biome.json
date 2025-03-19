@@ -25,7 +25,10 @@
         "noSvgWithoutTitle": "off"
       },
       "nursery": {
-        "useSortedClasses": "error"
+        "useSortedClasses": {
+          "level": "info",
+          "fix": "safe"
+        }
       },
       "suspicious": {
         "noArrayIndexKey": "info"

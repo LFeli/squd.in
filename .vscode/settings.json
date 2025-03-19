@@ -13,6 +13,7 @@
     "source.addMissingImports.ts": "always",
     "source.organizeImports.biome": "explicit",
     "source.sortImports.biome": "explicit",
-    "source.removeUnusedImports.biome": "always"
+    "source.removeUnusedImports.biome": "always",
+    "quickfix.biome": "explicit"
   }
 }
