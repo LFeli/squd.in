@@ -14,7 +14,7 @@ export default defineConfig({
 
       override: {
         fetch: {
-          includeHttpResponseReturnType: false,
+          includeHttpResponseReturnType: true,
         },
       },
     },

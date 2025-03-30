@@ -6,379 +6,363 @@
  * OpenAPI spec version: 0.0.1
  */
 export type CreateAccountBody = {
-  name: string
-  email: string
+  name: string;
+  email: string;
   /** @minLength 8 */
-  password: string
-}
+  password: string;
+};
 
 /**
  * @nullable
  */
-export type CreateAccount201 =
-  | (typeof CreateAccount201)[keyof typeof CreateAccount201]
-  | null
+export type CreateAccount201 = typeof CreateAccount201[keyof typeof CreateAccount201] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CreateAccount201 = {
   null: 'null',
-} as const
+} as const;
 
 export type AuthenticateWithPasswordBody = {
-  email: string
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 export type AuthenticateWithPassword201 = {
-  token: string
-}
+  token: string;
+};
 
 export type AuthenticateWithGithubBody = {
-  code: string
-}
+  code: string;
+};
 
 export type AuthenticateWithGithub201 = {
-  token: string
-}
+  token: string;
+};
 
 export type RequestPasswordRecoverBody = {
-  email: string
-}
+  email: string;
+};
 
 /**
  * @nullable
  */
-export type RequestPasswordRecover201 =
-  | (typeof RequestPasswordRecover201)[keyof typeof RequestPasswordRecover201]
-  | null
+export type RequestPasswordRecover201 = typeof RequestPasswordRecover201[keyof typeof RequestPasswordRecover201] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const RequestPasswordRecover201 = {
   null: 'null',
-} as const
+} as const;
 
 export type ResetPasswordBody = {
-  code: string
+  code: string;
   /** @minLength 8 */
-  password: string
-}
+  password: string;
+};
 
 /**
  * @nullable
  */
-export type ResetPassword204 =
-  | (typeof ResetPassword204)[keyof typeof ResetPassword204]
-  | null
+export type ResetPassword204 = typeof ResetPassword204[keyof typeof ResetPassword204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ResetPassword204 = {
   null: 'null',
-} as const
+} as const;
 
 export type GetProfile200User = {
-  id: string
+  id: string;
   /** @nullable */
-  name: string | null
-  email: string
+  name: string | null;
+  email: string;
   /** @nullable */
-  avatarUrl: string | null
-}
+  avatarUrl: string | null;
+};
 
 export type GetProfile200 = {
-  user: GetProfile200User
-}
+  user: GetProfile200User;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetMembership200MembershipRole = {
-  ADMIN: 'ADMIN',
+export const GetMembership200MembershipRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
 export type GetMembership200Membership = {
-  id: string
-  organizationId: string
-  role: (typeof GetMembership200MembershipRole)[keyof typeof GetMembership200MembershipRole]
-}
+  id: string;
+  organizationId: string;
+  role: typeof GetMembership200MembershipRole[keyof typeof GetMembership200MembershipRole] ;
+};
 
 export type GetMembership200 = {
-  membership: GetMembership200Membership
-}
+  membership: GetMembership200Membership;
+};
 
 export type GetOrganizationDetails200Organization = {
-  id: string
-  name: string
-  slug: string
+  id: string;
+  name: string;
+  slug: string;
   /** @nullable */
-  domain: string | null
-  shouldAttachUsersByDomain: boolean
+  domain: string | null;
+  shouldAttachUsersByDomain: boolean;
   /** @nullable */
-  avatarUrl: string | null
-  createdAt: string
-  updatedAt: string
-  ownerId: string
-}
+  avatarUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
+  ownerId: string;
+};
 
 export type GetOrganizationDetails200 = {
-  organization: GetOrganizationDetails200Organization
-}
+  organization: GetOrganizationDetails200Organization;
+};
 
 export type UpdateOrganizationBody = {
-  name: string
+  name: string;
   /** @nullable */
-  domain?: string | null
-  shouldAttachUsersByDomain?: boolean
-}
+  domain?: string | null;
+  shouldAttachUsersByDomain?: boolean;
+};
 
 /**
  * @nullable
  */
-export type UpdateOrganization204 =
-  | (typeof UpdateOrganization204)[keyof typeof UpdateOrganization204]
-  | null
+export type UpdateOrganization204 = typeof UpdateOrganization204[keyof typeof UpdateOrganization204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const UpdateOrganization204 = {
   null: 'null',
-} as const
+} as const;
 
 /**
  * @nullable
  */
-export type ShutdownOrganization204 =
-  | (typeof ShutdownOrganization204)[keyof typeof ShutdownOrganization204]
-  | null
+export type ShutdownOrganization204 = typeof ShutdownOrganization204[keyof typeof ShutdownOrganization204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ShutdownOrganization204 = {
   null: 'null',
-} as const
+} as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetOrganizations200OrganizationsItemRole = {
-  ADMIN: 'ADMIN',
+export const GetOrganizations200OrganizationsItemRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
 export type GetOrganizations200OrganizationsItem = {
-  id: string
-  name: string
-  slug: string
+  id: string;
+  name: string;
+  slug: string;
   /** @nullable */
-  avatarUrl: string | null
-  role: (typeof GetOrganizations200OrganizationsItemRole)[keyof typeof GetOrganizations200OrganizationsItemRole]
-}
+  avatarUrl: string | null;
+  role: typeof GetOrganizations200OrganizationsItemRole[keyof typeof GetOrganizations200OrganizationsItemRole] ;
+};
 
 export type GetOrganizations200 = {
-  organizations: GetOrganizations200OrganizationsItem[]
-}
+  organizations: GetOrganizations200OrganizationsItem[];
+};
 
 export type CreateOrganizationBody = {
-  name: string
+  name: string;
   /** @nullable */
-  domain?: string | null
-  shouldAttachUsersByDomain?: boolean
-}
+  domain?: string | null;
+  shouldAttachUsersByDomain?: boolean;
+};
 
 export type CreateOrganization201 = {
-  organizationId: string
-}
+  organizationId: string;
+};
 
 export type TransferOrganizationBody = {
-  transferToUserId: string
-}
+  transferToUserId: string;
+};
 
 /**
  * @nullable
  */
-export type TransferOrganization204 =
-  | (typeof TransferOrganization204)[keyof typeof TransferOrganization204]
-  | null
+export type TransferOrganization204 = typeof TransferOrganization204[keyof typeof TransferOrganization204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransferOrganization204 = {
   null: 'null',
-} as const
+} as const;
 
 export type GetProjectDetails200ProjectOwner = {
-  id: string
+  id: string;
   /** @nullable */
-  name: string | null
+  name: string | null;
   /** @nullable */
-  avatarUrl: string | null
-}
+  avatarUrl: string | null;
+};
 
 export type GetProjectDetails200Project = {
-  id: string
-  description: string
-  name: string
-  slug: string
+  id: string;
+  description: string;
+  name: string;
+  slug: string;
   /** @nullable */
-  avatarUrl: string | null
-  organizationId: string
-  ownerId: string
-  owner: GetProjectDetails200ProjectOwner
-}
+  avatarUrl: string | null;
+  organizationId: string;
+  ownerId: string;
+  owner: GetProjectDetails200ProjectOwner;
+};
 
 export type GetProjectDetails200 = {
-  project: GetProjectDetails200Project
-}
+  project: GetProjectDetails200Project;
+};
 
 export type GetProjects200ProjectsItemOwner = {
-  id: string
+  id: string;
   /** @nullable */
-  name: string | null
+  name: string | null;
   /** @nullable */
-  avatarUrl: string | null
-}
+  avatarUrl: string | null;
+};
 
 export type GetProjects200ProjectsItem = {
-  id: string
-  description: string
-  name: string
-  slug: string
+  id: string;
+  description: string;
+  name: string;
+  slug: string;
   /** @nullable */
-  avatarUrl: string | null
-  organizationId: string
-  ownerId: string
-  createdAt: string
-  owner: GetProjects200ProjectsItemOwner
-}
+  avatarUrl: string | null;
+  organizationId: string;
+  ownerId: string;
+  createdAt: string;
+  owner: GetProjects200ProjectsItemOwner;
+};
 
 export type GetProjects200 = {
-  projects: GetProjects200ProjectsItem[]
-}
+  projects: GetProjects200ProjectsItem[];
+};
 
 export type CreateProjectBody = {
-  name: string
-  description: string
-}
+  name: string;
+  description: string;
+};
 
 export type CreateProject201 = {
-  projectId: string
-}
+  projectId: string;
+};
 
 export type UpdateProjectBody = {
-  name: string
-  description: string
-}
+  name: string;
+  description: string;
+};
 
 /**
  * @nullable
  */
-export type UpdateProject204 =
-  | (typeof UpdateProject204)[keyof typeof UpdateProject204]
-  | null
+export type UpdateProject204 = typeof UpdateProject204[keyof typeof UpdateProject204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const UpdateProject204 = {
   null: 'null',
-} as const
+} as const;
 
 /**
  * @nullable
  */
-export type DeleteProject204 =
-  | (typeof DeleteProject204)[keyof typeof DeleteProject204]
-  | null
+export type DeleteProject204 = typeof DeleteProject204[keyof typeof DeleteProject204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const DeleteProject204 = {
   null: 'null',
-} as const
+} as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetOrganizationMembers200MembersItemRole = {
-  ADMIN: 'ADMIN',
+export const GetOrganizationMembers200MembersItemRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
 export type GetOrganizationMembers200MembersItem = {
-  id: string
-  userId: string
-  role: (typeof GetOrganizationMembers200MembersItemRole)[keyof typeof GetOrganizationMembers200MembersItemRole]
+  id: string;
+  userId: string;
+  role: typeof GetOrganizationMembers200MembersItemRole[keyof typeof GetOrganizationMembers200MembersItemRole] ;
   /** @nullable */
-  name: string | null
-  email: string
+  name: string | null;
+  email: string;
   /** @nullable */
-  avatarUrl: string | null
-}
+  avatarUrl: string | null;
+};
 
 export type GetOrganizationMembers200 = {
-  members: GetOrganizationMembers200MembersItem[]
-}
+  members: GetOrganizationMembers200MembersItem[];
+};
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const UpdateMemberBodyRole = {
-  ADMIN: 'ADMIN',
+export const UpdateMemberBodyRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
 export type UpdateMemberBody = {
-  role: (typeof UpdateMemberBodyRole)[keyof typeof UpdateMemberBodyRole]
-}
+  role: typeof UpdateMemberBodyRole[keyof typeof UpdateMemberBodyRole] ;
+};
 
 /**
  * @nullable
  */
-export type UpdateMember204 =
-  | (typeof UpdateMember204)[keyof typeof UpdateMember204]
-  | null
+export type UpdateMember204 = typeof UpdateMember204[keyof typeof UpdateMember204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const UpdateMember204 = {
   null: 'null',
-} as const
+} as const;
 
 /**
  * @nullable
  */
-export type RemoveMember204 =
-  | (typeof RemoveMember204)[keyof typeof RemoveMember204]
-  | null
+export type RemoveMember204 = typeof RemoveMember204[keyof typeof RemoveMember204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const RemoveMember204 = {
   null: 'null',
-} as const
+} as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetInvitesDetails200InviteRole = {
-  ADMIN: 'ADMIN',
+export const GetInvitesDetails200InviteRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
 export type GetInvitesDetails200InviteOrganization = {
-  name: string
-}
+  name: string;
+};
 
 /**
  * @nullable
  */
 export type GetInvitesDetails200InviteAuthor = {
-  id: string
+  id: string;
   /** @nullable */
-  name: string | null
+  name: string | null;
   /** @nullable */
-  avatarUrl: string | null
-} | null
+  avatarUrl: string | null;
+} | null;
 
 export type GetInvitesDetails200Invite = {
-  id: string
-  role: (typeof GetInvitesDetails200InviteRole)[keyof typeof GetInvitesDetails200InviteRole]
-  email: string
-  createdAt: string
-  organization: GetInvitesDetails200InviteOrganization
+  id: string;
+  role: typeof GetInvitesDetails200InviteRole[keyof typeof GetInvitesDetails200InviteRole] ;
+  email: string;
+  createdAt: string;
+  organization: GetInvitesDetails200InviteOrganization;
   /** @nullable */
-  author: GetInvitesDetails200InviteAuthor
-}
+  author: GetInvitesDetails200InviteAuthor;
+};
 
 export type GetInvitesDetails200 = {
-  invite: GetInvitesDetails200Invite
-}
+  invite: GetInvitesDetails200Invite;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetInvites200InvitesItemRole = {
-  ADMIN: 'ADMIN',
+export const GetInvites200InvitesItemRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
@@ -386,811 +370,1340 @@ export const GetInvites200InvitesItemRole = {
  * @nullable
  */
 export type GetInvites200InvitesItemAuthor = {
-  id: string
+  id: string;
   /** @nullable */
-  name: string | null
-} | null
+  name: string | null;
+} | null;
 
 export type GetInvites200InvitesItem = {
-  id: string
-  role: (typeof GetInvites200InvitesItemRole)[keyof typeof GetInvites200InvitesItemRole]
-  email: string
-  createdAt: string
+  id: string;
+  role: typeof GetInvites200InvitesItemRole[keyof typeof GetInvites200InvitesItemRole] ;
+  email: string;
+  createdAt: string;
   /** @nullable */
-  author: GetInvites200InvitesItemAuthor
-}
+  author: GetInvites200InvitesItemAuthor;
+};
 
 export type GetInvites200 = {
-  invites: GetInvites200InvitesItem[]
-}
+  invites: GetInvites200InvitesItem[];
+};
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const CreateInviteBodyRole = {
-  ADMIN: 'ADMIN',
+export const CreateInviteBodyRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
 export type CreateInviteBody = {
-  email: string
-  role: (typeof CreateInviteBodyRole)[keyof typeof CreateInviteBodyRole]
-}
+  email: string;
+  role: typeof CreateInviteBodyRole[keyof typeof CreateInviteBodyRole] ;
+};
 
 export type CreateInvite201 = {
-  inviteId: string
-}
+  inviteId: string;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetPendingInvites200InvitesItemRole = {
-  ADMIN: 'ADMIN',
+export const GetPendingInvites200InvitesItemRole = {  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
   BILLING: 'BILLING',
 } as const
 export type GetPendingInvites200InvitesItemOrganization = {
-  name: string
-}
+  name: string;
+};
 
 /**
  * @nullable
  */
 export type GetPendingInvites200InvitesItemAuthor = {
-  id: string
+  id: string;
   /** @nullable */
-  name: string | null
+  name: string | null;
   /** @nullable */
-  avatarUrl: string | null
-} | null
+  avatarUrl: string | null;
+} | null;
 
 export type GetPendingInvites200InvitesItem = {
-  id: string
-  role: (typeof GetPendingInvites200InvitesItemRole)[keyof typeof GetPendingInvites200InvitesItemRole]
-  email: string
-  createdAt: string
-  organization: GetPendingInvites200InvitesItemOrganization
+  id: string;
+  role: typeof GetPendingInvites200InvitesItemRole[keyof typeof GetPendingInvites200InvitesItemRole] ;
+  email: string;
+  createdAt: string;
+  organization: GetPendingInvites200InvitesItemOrganization;
   /** @nullable */
-  author: GetPendingInvites200InvitesItemAuthor
-}
+  author: GetPendingInvites200InvitesItemAuthor;
+};
 
 export type GetPendingInvites200 = {
-  invites: GetPendingInvites200InvitesItem[]
-}
+  invites: GetPendingInvites200InvitesItem[];
+};
 
 /**
  * @nullable
  */
-export type AcceptInvite204 =
-  | (typeof AcceptInvite204)[keyof typeof AcceptInvite204]
-  | null
+export type AcceptInvite204 = typeof AcceptInvite204[keyof typeof AcceptInvite204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const AcceptInvite204 = {
   null: 'null',
-} as const
+} as const;
 
 /**
  * @nullable
  */
-export type RejectInvite204 =
-  | (typeof RejectInvite204)[keyof typeof RejectInvite204]
-  | null
+export type RejectInvite204 = typeof RejectInvite204[keyof typeof RejectInvite204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const RejectInvite204 = {
   null: 'null',
-} as const
+} as const;
 
 /**
  * @nullable
  */
-export type RevokeInvite204 =
-  | (typeof RevokeInvite204)[keyof typeof RevokeInvite204]
-  | null
+export type RevokeInvite204 = typeof RevokeInvite204[keyof typeof RevokeInvite204] | null;
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const RevokeInvite204 = {
   null: 'null',
-} as const
+} as const;
 
 export type GetOrganizationBilling200BillingSeats = {
-  amount: number
-  unit: number
-  price: number
-}
+  amount: number;
+  unit: number;
+  price: number;
+};
 
 export type GetOrganizationBilling200BillingProjects = {
-  amount: number
-  unit: number
-  price: number
-}
+  amount: number;
+  unit: number;
+  price: number;
+};
 
 export type GetOrganizationBilling200Billing = {
-  seats: GetOrganizationBilling200BillingSeats
-  projects: GetOrganizationBilling200BillingProjects
-  total: number
-}
+  seats: GetOrganizationBilling200BillingSeats;
+  projects: GetOrganizationBilling200BillingProjects;
+  total: number;
+};
 
 export type GetOrganizationBilling200 = {
-  billing: GetOrganizationBilling200Billing
-}
+  billing: GetOrganizationBilling200Billing;
+};
 
 /**
  * @summary Create a new user account
  */
+export type createAccountResponse201 = {
+  data: CreateAccount201
+  status: 201
+}
+    
+export type createAccountResponseComposite = createAccountResponse201;
+    
+export type createAccountResponse = createAccountResponseComposite & {
+  headers: Headers;
+}
+
 export const getCreateAccountUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/user`
 }
 
-export const createAccount = async (
-  createAccountBody: CreateAccountBody,
-  options?: RequestInit
-): Promise<CreateAccount201> => {
-  const res = await fetch(getCreateAccountUrl(), {
+export const createAccount = async (createAccountBody: CreateAccountBody, options?: RequestInit): Promise<createAccountResponse> => {
+  
+  const res = await fetch(getCreateAccountUrl(),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(createAccountBody),
-  })
+    body: JSON.stringify(
+      createAccountBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: CreateAccount201 = body ? JSON.parse(body) : {}
+  const data: createAccountResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as createAccountResponse
 }
+
+
 
 /**
  * @summary Authenticate with e-mail and password
  */
+export type authenticateWithPasswordResponse201 = {
+  data: AuthenticateWithPassword201
+  status: 201
+}
+    
+export type authenticateWithPasswordResponseComposite = authenticateWithPasswordResponse201;
+    
+export type authenticateWithPasswordResponse = authenticateWithPasswordResponseComposite & {
+  headers: Headers;
+}
+
 export const getAuthenticateWithPasswordUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/sessions/password`
 }
 
-export const authenticateWithPassword = async (
-  authenticateWithPasswordBody: AuthenticateWithPasswordBody,
-  options?: RequestInit
-): Promise<AuthenticateWithPassword201> => {
-  const res = await fetch(getAuthenticateWithPasswordUrl(), {
+export const authenticateWithPassword = async (authenticateWithPasswordBody: AuthenticateWithPasswordBody, options?: RequestInit): Promise<authenticateWithPasswordResponse> => {
+  
+  const res = await fetch(getAuthenticateWithPasswordUrl(),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(authenticateWithPasswordBody),
-  })
+    body: JSON.stringify(
+      authenticateWithPasswordBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: AuthenticateWithPassword201 = body ? JSON.parse(body) : {}
+  const data: authenticateWithPasswordResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as authenticateWithPasswordResponse
 }
+
+
 
 /**
  * @summary Authenticate with github
  */
+export type authenticateWithGithubResponse201 = {
+  data: AuthenticateWithGithub201
+  status: 201
+}
+    
+export type authenticateWithGithubResponseComposite = authenticateWithGithubResponse201;
+    
+export type authenticateWithGithubResponse = authenticateWithGithubResponseComposite & {
+  headers: Headers;
+}
+
 export const getAuthenticateWithGithubUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/sessions/github`
 }
 
-export const authenticateWithGithub = async (
-  authenticateWithGithubBody: AuthenticateWithGithubBody,
-  options?: RequestInit
-): Promise<AuthenticateWithGithub201> => {
-  const res = await fetch(getAuthenticateWithGithubUrl(), {
+export const authenticateWithGithub = async (authenticateWithGithubBody: AuthenticateWithGithubBody, options?: RequestInit): Promise<authenticateWithGithubResponse> => {
+  
+  const res = await fetch(getAuthenticateWithGithubUrl(),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(authenticateWithGithubBody),
-  })
+    body: JSON.stringify(
+      authenticateWithGithubBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: AuthenticateWithGithub201 = body ? JSON.parse(body) : {}
+  const data: authenticateWithGithubResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as authenticateWithGithubResponse
 }
+
+
 
 /**
  * Request password recover
  */
+export type requestPasswordRecoverResponse201 = {
+  data: RequestPasswordRecover201
+  status: 201
+}
+    
+export type requestPasswordRecoverResponseComposite = requestPasswordRecoverResponse201;
+    
+export type requestPasswordRecoverResponse = requestPasswordRecoverResponseComposite & {
+  headers: Headers;
+}
+
 export const getRequestPasswordRecoverUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/password/recover`
 }
 
-export const requestPasswordRecover = async (
-  requestPasswordRecoverBody: RequestPasswordRecoverBody,
-  options?: RequestInit
-): Promise<RequestPasswordRecover201> => {
-  const res = await fetch(getRequestPasswordRecoverUrl(), {
+export const requestPasswordRecover = async (requestPasswordRecoverBody: RequestPasswordRecoverBody, options?: RequestInit): Promise<requestPasswordRecoverResponse> => {
+  
+  const res = await fetch(getRequestPasswordRecoverUrl(),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(requestPasswordRecoverBody),
-  })
+    body: JSON.stringify(
+      requestPasswordRecoverBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: RequestPasswordRecover201 = body ? JSON.parse(body) : {}
+  const data: requestPasswordRecoverResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as requestPasswordRecoverResponse
 }
+
+
 
 /**
  * Reset password
  */
+export type resetPasswordResponse204 = {
+  data: ResetPassword204
+  status: 204
+}
+    
+export type resetPasswordResponseComposite = resetPasswordResponse204;
+    
+export type resetPasswordResponse = resetPasswordResponseComposite & {
+  headers: Headers;
+}
+
 export const getResetPasswordUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/password/reset`
 }
 
-export const resetPassword = async (
-  resetPasswordBody: ResetPasswordBody,
-  options?: RequestInit
-): Promise<ResetPassword204> => {
-  const res = await fetch(getResetPasswordUrl(), {
+export const resetPassword = async (resetPasswordBody: ResetPasswordBody, options?: RequestInit): Promise<resetPasswordResponse> => {
+  
+  const res = await fetch(getResetPasswordUrl(),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(resetPasswordBody),
-  })
+    body: JSON.stringify(
+      resetPasswordBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: ResetPassword204 = body ? JSON.parse(body) : {}
+  const data: resetPasswordResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as resetPasswordResponse
 }
+
+
 
 /**
  * @summary Get authenticated user profile
  */
+export type getProfileResponse200 = {
+  data: GetProfile200
+  status: 200
+}
+    
+export type getProfileResponseComposite = getProfileResponse200;
+    
+export type getProfileResponse = getProfileResponseComposite & {
+  headers: Headers;
+}
+
 export const getGetProfileUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/profile`
 }
 
-export const getProfile = async (
-  options?: RequestInit
-): Promise<GetProfile200> => {
-  const res = await fetch(getGetProfileUrl(), {
+export const getProfile = async ( options?: RequestInit): Promise<getProfileResponse> => {
+  
+  const res = await fetch(getGetProfileUrl(),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetProfile200 = body ? JSON.parse(body) : {}
+  const data: getProfileResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getProfileResponse
 }
+
+
 
 /**
  * @summary Get organization membership on organization
  */
-export const getGetMembershipUrl = (slug: string) => {
+export type getMembershipResponse200 = {
+  data: GetMembership200
+  status: 200
+}
+    
+export type getMembershipResponseComposite = getMembershipResponse200;
+    
+export type getMembershipResponse = getMembershipResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetMembershipUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/membership`
 }
 
-export const getMembership = async (
-  slug: string,
-  options?: RequestInit
-): Promise<GetMembership200> => {
-  const res = await fetch(getGetMembershipUrl(slug), {
+export const getMembership = async (slug: string, options?: RequestInit): Promise<getMembershipResponse> => {
+  
+  const res = await fetch(getGetMembershipUrl(slug),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetMembership200 = body ? JSON.parse(body) : {}
+  const data: getMembershipResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getMembershipResponse
 }
+
+
 
 /**
  * @summary Get details of an organization
  */
-export const getGetOrganizationDetailsUrl = (slug: string) => {
+export type getOrganizationDetailsResponse200 = {
+  data: GetOrganizationDetails200
+  status: 200
+}
+    
+export type getOrganizationDetailsResponseComposite = getOrganizationDetailsResponse200;
+    
+export type getOrganizationDetailsResponse = getOrganizationDetailsResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetOrganizationDetailsUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}`
 }
 
-export const getOrganizationDetails = async (
-  slug: string,
-  options?: RequestInit
-): Promise<GetOrganizationDetails200> => {
-  const res = await fetch(getGetOrganizationDetailsUrl(slug), {
+export const getOrganizationDetails = async (slug: string, options?: RequestInit): Promise<getOrganizationDetailsResponse> => {
+  
+  const res = await fetch(getGetOrganizationDetailsUrl(slug),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetOrganizationDetails200 = body ? JSON.parse(body) : {}
+  const data: getOrganizationDetailsResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getOrganizationDetailsResponse
 }
+
+
 
 /**
  * @summary Update organization details
  */
-export const getUpdateOrganizationUrl = (slug: string) => {
+export type updateOrganizationResponse204 = {
+  data: UpdateOrganization204
+  status: 204
+}
+    
+export type updateOrganizationResponseComposite = updateOrganizationResponse204;
+    
+export type updateOrganizationResponse = updateOrganizationResponseComposite & {
+  headers: Headers;
+}
+
+export const getUpdateOrganizationUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}`
 }
 
-export const updateOrganization = async (
-  slug: string,
-  updateOrganizationBody: UpdateOrganizationBody,
-  options?: RequestInit
-): Promise<UpdateOrganization204> => {
-  const res = await fetch(getUpdateOrganizationUrl(slug), {
+export const updateOrganization = async (slug: string,
+    updateOrganizationBody: UpdateOrganizationBody, options?: RequestInit): Promise<updateOrganizationResponse> => {
+  
+  const res = await fetch(getUpdateOrganizationUrl(slug),
+  {      
     ...options,
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(updateOrganizationBody),
-  })
+    body: JSON.stringify(
+      updateOrganizationBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: UpdateOrganization204 = body ? JSON.parse(body) : {}
+  const data: updateOrganizationResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as updateOrganizationResponse
 }
+
+
 
 /**
  * @summary Shutdown organization
  */
-export const getShutdownOrganizationUrl = (slug: string) => {
+export type shutdownOrganizationResponse204 = {
+  data: ShutdownOrganization204
+  status: 204
+}
+    
+export type shutdownOrganizationResponseComposite = shutdownOrganizationResponse204;
+    
+export type shutdownOrganizationResponse = shutdownOrganizationResponseComposite & {
+  headers: Headers;
+}
+
+export const getShutdownOrganizationUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}`
 }
 
-export const shutdownOrganization = async (
-  slug: string,
-  options?: RequestInit
-): Promise<ShutdownOrganization204> => {
-  const res = await fetch(getShutdownOrganizationUrl(slug), {
+export const shutdownOrganization = async (slug: string, options?: RequestInit): Promise<shutdownOrganizationResponse> => {
+  
+  const res = await fetch(getShutdownOrganizationUrl(slug),
+  {      
     ...options,
-    method: 'DELETE',
-  })
+    method: 'DELETE'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: ShutdownOrganization204 = body ? JSON.parse(body) : {}
+  const data: shutdownOrganizationResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as shutdownOrganizationResponse
 }
+
+
 
 /**
  * @summary Get organizations where user is a member
  */
+export type getOrganizationsResponse200 = {
+  data: GetOrganizations200
+  status: 200
+}
+    
+export type getOrganizationsResponseComposite = getOrganizationsResponse200;
+    
+export type getOrganizationsResponse = getOrganizationsResponseComposite & {
+  headers: Headers;
+}
+
 export const getGetOrganizationsUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/organizations`
 }
 
-export const getOrganizations = async (
-  options?: RequestInit
-): Promise<GetOrganizations200> => {
-  const res = await fetch(getGetOrganizationsUrl(), {
+export const getOrganizations = async ( options?: RequestInit): Promise<getOrganizationsResponse> => {
+  
+  const res = await fetch(getGetOrganizationsUrl(),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetOrganizations200 = body ? JSON.parse(body) : {}
+  const data: getOrganizationsResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getOrganizationsResponse
 }
+
+
 
 /**
  * @summary Create a new organization
  */
+export type createOrganizationResponse201 = {
+  data: CreateOrganization201
+  status: 201
+}
+    
+export type createOrganizationResponseComposite = createOrganizationResponse201;
+    
+export type createOrganizationResponse = createOrganizationResponseComposite & {
+  headers: Headers;
+}
+
 export const getCreateOrganizationUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/organizations`
 }
 
-export const createOrganization = async (
-  createOrganizationBody: CreateOrganizationBody,
-  options?: RequestInit
-): Promise<CreateOrganization201> => {
-  const res = await fetch(getCreateOrganizationUrl(), {
+export const createOrganization = async (createOrganizationBody: CreateOrganizationBody, options?: RequestInit): Promise<createOrganizationResponse> => {
+  
+  const res = await fetch(getCreateOrganizationUrl(),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(createOrganizationBody),
-  })
+    body: JSON.stringify(
+      createOrganizationBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: CreateOrganization201 = body ? JSON.parse(body) : {}
+  const data: createOrganizationResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as createOrganizationResponse
 }
+
+
 
 /**
  * @summary Transfer organization ownership
  */
-export const getTransferOrganizationUrl = (slug: string) => {
+export type transferOrganizationResponse204 = {
+  data: TransferOrganization204
+  status: 204
+}
+    
+export type transferOrganizationResponseComposite = transferOrganizationResponse204;
+    
+export type transferOrganizationResponse = transferOrganizationResponseComposite & {
+  headers: Headers;
+}
+
+export const getTransferOrganizationUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/owner`
 }
 
-export const transferOrganization = async (
-  slug: string,
-  transferOrganizationBody: TransferOrganizationBody,
-  options?: RequestInit
-): Promise<TransferOrganization204> => {
-  const res = await fetch(getTransferOrganizationUrl(slug), {
+export const transferOrganization = async (slug: string,
+    transferOrganizationBody: TransferOrganizationBody, options?: RequestInit): Promise<transferOrganizationResponse> => {
+  
+  const res = await fetch(getTransferOrganizationUrl(slug),
+  {      
     ...options,
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(transferOrganizationBody),
-  })
+    body: JSON.stringify(
+      transferOrganizationBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: TransferOrganization204 = body ? JSON.parse(body) : {}
+  const data: transferOrganizationResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as transferOrganizationResponse
 }
+
+
 
 /**
  * @summary Get Project Details
  */
-export const getGetProjectDetailsUrl = (
-  orgSlug: string,
-  projectSlug: string
-) => {
+export type getProjectDetailsResponse200 = {
+  data: GetProjectDetails200
+  status: 200
+}
+    
+export type getProjectDetailsResponseComposite = getProjectDetailsResponse200;
+    
+export type getProjectDetailsResponse = getProjectDetailsResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetProjectDetailsUrl = (orgSlug: string,
+    projectSlug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${orgSlug}/projects/${projectSlug}`
 }
 
-export const getProjectDetails = async (
-  orgSlug: string,
-  projectSlug: string,
-  options?: RequestInit
-): Promise<GetProjectDetails200> => {
-  const res = await fetch(getGetProjectDetailsUrl(orgSlug, projectSlug), {
+export const getProjectDetails = async (orgSlug: string,
+    projectSlug: string, options?: RequestInit): Promise<getProjectDetailsResponse> => {
+  
+  const res = await fetch(getGetProjectDetailsUrl(orgSlug,projectSlug),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetProjectDetails200 = body ? JSON.parse(body) : {}
+  const data: getProjectDetailsResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getProjectDetailsResponse
 }
+
+
 
 /**
  * @summary Get all organization projects
  */
-export const getGetProjectsUrl = (slug: string) => {
+export type getProjectsResponse200 = {
+  data: GetProjects200
+  status: 200
+}
+    
+export type getProjectsResponseComposite = getProjectsResponse200;
+    
+export type getProjectsResponse = getProjectsResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetProjectsUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/projects`
 }
 
-export const getProjects = async (
-  slug: string,
-  options?: RequestInit
-): Promise<GetProjects200> => {
-  const res = await fetch(getGetProjectsUrl(slug), {
+export const getProjects = async (slug: string, options?: RequestInit): Promise<getProjectsResponse> => {
+  
+  const res = await fetch(getGetProjectsUrl(slug),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetProjects200 = body ? JSON.parse(body) : {}
+  const data: getProjectsResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getProjectsResponse
 }
+
+
 
 /**
  * @summary Create a new project in a organization
  */
-export const getCreateProjectUrl = (slug: string) => {
+export type createProjectResponse201 = {
+  data: CreateProject201
+  status: 201
+}
+    
+export type createProjectResponseComposite = createProjectResponse201;
+    
+export type createProjectResponse = createProjectResponseComposite & {
+  headers: Headers;
+}
+
+export const getCreateProjectUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/projects`
 }
 
-export const createProject = async (
-  slug: string,
-  createProjectBody: CreateProjectBody,
-  options?: RequestInit
-): Promise<CreateProject201> => {
-  const res = await fetch(getCreateProjectUrl(slug), {
+export const createProject = async (slug: string,
+    createProjectBody: CreateProjectBody, options?: RequestInit): Promise<createProjectResponse> => {
+  
+  const res = await fetch(getCreateProjectUrl(slug),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(createProjectBody),
-  })
+    body: JSON.stringify(
+      createProjectBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: CreateProject201 = body ? JSON.parse(body) : {}
+  const data: createProjectResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as createProjectResponse
 }
+
+
 
 /**
  * @summary Delete a project
  */
-export const getUpdateProjectUrl = (slug: string, projectId: string) => {
+export type updateProjectResponse204 = {
+  data: UpdateProject204
+  status: 204
+}
+    
+export type updateProjectResponseComposite = updateProjectResponse204;
+    
+export type updateProjectResponse = updateProjectResponseComposite & {
+  headers: Headers;
+}
+
+export const getUpdateProjectUrl = (slug: string,
+    projectId: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/projects/${projectId}`
 }
 
-export const updateProject = async (
-  slug: string,
-  projectId: string,
-  updateProjectBody: UpdateProjectBody,
-  options?: RequestInit
-): Promise<UpdateProject204> => {
-  const res = await fetch(getUpdateProjectUrl(slug, projectId), {
+export const updateProject = async (slug: string,
+    projectId: string,
+    updateProjectBody: UpdateProjectBody, options?: RequestInit): Promise<updateProjectResponse> => {
+  
+  const res = await fetch(getUpdateProjectUrl(slug,projectId),
+  {      
     ...options,
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(updateProjectBody),
-  })
+    body: JSON.stringify(
+      updateProjectBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: UpdateProject204 = body ? JSON.parse(body) : {}
+  const data: updateProjectResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as updateProjectResponse
 }
+
+
 
 /**
  * @summary Delete a project
  */
-export const getDeleteProjectUrl = (slug: string, projectId: string) => {
+export type deleteProjectResponse204 = {
+  data: DeleteProject204
+  status: 204
+}
+    
+export type deleteProjectResponseComposite = deleteProjectResponse204;
+    
+export type deleteProjectResponse = deleteProjectResponseComposite & {
+  headers: Headers;
+}
+
+export const getDeleteProjectUrl = (slug: string,
+    projectId: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/projects/${projectId}`
 }
 
-export const deleteProject = async (
-  slug: string,
-  projectId: string,
-  options?: RequestInit
-): Promise<DeleteProject204> => {
-  const res = await fetch(getDeleteProjectUrl(slug, projectId), {
+export const deleteProject = async (slug: string,
+    projectId: string, options?: RequestInit): Promise<deleteProjectResponse> => {
+  
+  const res = await fetch(getDeleteProjectUrl(slug,projectId),
+  {      
     ...options,
-    method: 'DELETE',
-  })
+    method: 'DELETE'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: DeleteProject204 = body ? JSON.parse(body) : {}
+  const data: deleteProjectResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as deleteProjectResponse
 }
+
+
 
 /**
  * @summary Get all members in a organization
  */
-export const getGetOrganizationMembersUrl = (slug: string) => {
+export type getOrganizationMembersResponse200 = {
+  data: GetOrganizationMembers200
+  status: 200
+}
+    
+export type getOrganizationMembersResponseComposite = getOrganizationMembersResponse200;
+    
+export type getOrganizationMembersResponse = getOrganizationMembersResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetOrganizationMembersUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/members`
 }
 
-export const getOrganizationMembers = async (
-  slug: string,
-  options?: RequestInit
-): Promise<GetOrganizationMembers200> => {
-  const res = await fetch(getGetOrganizationMembersUrl(slug), {
+export const getOrganizationMembers = async (slug: string, options?: RequestInit): Promise<getOrganizationMembersResponse> => {
+  
+  const res = await fetch(getGetOrganizationMembersUrl(slug),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetOrganizationMembers200 = body ? JSON.parse(body) : {}
+  const data: getOrganizationMembersResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getOrganizationMembersResponse
 }
+
+
 
 /**
  * @summary Update a member infos
  */
-export const getUpdateMemberUrl = (slug: string, memberId: string) => {
+export type updateMemberResponse204 = {
+  data: UpdateMember204
+  status: 204
+}
+    
+export type updateMemberResponseComposite = updateMemberResponse204;
+    
+export type updateMemberResponse = updateMemberResponseComposite & {
+  headers: Headers;
+}
+
+export const getUpdateMemberUrl = (slug: string,
+    memberId: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/members/${memberId}`
 }
 
-export const updateMember = async (
-  slug: string,
-  memberId: string,
-  updateMemberBody: UpdateMemberBody,
-  options?: RequestInit
-): Promise<UpdateMember204> => {
-  const res = await fetch(getUpdateMemberUrl(slug, memberId), {
+export const updateMember = async (slug: string,
+    memberId: string,
+    updateMemberBody: UpdateMemberBody, options?: RequestInit): Promise<updateMemberResponse> => {
+  
+  const res = await fetch(getUpdateMemberUrl(slug,memberId),
+  {      
     ...options,
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(updateMemberBody),
-  })
+    body: JSON.stringify(
+      updateMemberBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: UpdateMember204 = body ? JSON.parse(body) : {}
+  const data: updateMemberResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as updateMemberResponse
 }
+
+
 
 /**
  * @summary Remove a member in a organization
  */
-export const getRemoveMemberUrl = (slug: string, memberId: string) => {
+export type removeMemberResponse204 = {
+  data: RemoveMember204
+  status: 204
+}
+    
+export type removeMemberResponseComposite = removeMemberResponse204;
+    
+export type removeMemberResponse = removeMemberResponseComposite & {
+  headers: Headers;
+}
+
+export const getRemoveMemberUrl = (slug: string,
+    memberId: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/members/${memberId}`
 }
 
-export const removeMember = async (
-  slug: string,
-  memberId: string,
-  options?: RequestInit
-): Promise<RemoveMember204> => {
-  const res = await fetch(getRemoveMemberUrl(slug, memberId), {
+export const removeMember = async (slug: string,
+    memberId: string, options?: RequestInit): Promise<removeMemberResponse> => {
+  
+  const res = await fetch(getRemoveMemberUrl(slug,memberId),
+  {      
     ...options,
-    method: 'DELETE',
-  })
+    method: 'DELETE'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: RemoveMember204 = body ? JSON.parse(body) : {}
+  const data: removeMemberResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as removeMemberResponse
 }
+
+
 
 /**
  * @summary Get an invite details
  */
-export const getGetInvitesDetailsUrl = (inviteId: string) => {
+export type getInvitesDetailsResponse200 = {
+  data: GetInvitesDetails200
+  status: 200
+}
+    
+export type getInvitesDetailsResponseComposite = getInvitesDetailsResponse200;
+    
+export type getInvitesDetailsResponse = getInvitesDetailsResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetInvitesDetailsUrl = (inviteId: string,) => {
+
+
+  
+
   return `http://localhost:3333/invites/${inviteId}`
 }
 
-export const getInvitesDetails = async (
-  inviteId: string,
-  options?: RequestInit
-): Promise<GetInvitesDetails200> => {
-  const res = await fetch(getGetInvitesDetailsUrl(inviteId), {
+export const getInvitesDetails = async (inviteId: string, options?: RequestInit): Promise<getInvitesDetailsResponse> => {
+  
+  const res = await fetch(getGetInvitesDetailsUrl(inviteId),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetInvitesDetails200 = body ? JSON.parse(body) : {}
+  const data: getInvitesDetailsResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getInvitesDetailsResponse
 }
+
+
 
 /**
  * @summary Get all invites in a organization
  */
-export const getGetInvitesUrl = (slug: string) => {
+export type getInvitesResponse200 = {
+  data: GetInvites200
+  status: 200
+}
+    
+export type getInvitesResponseComposite = getInvitesResponse200;
+    
+export type getInvitesResponse = getInvitesResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetInvitesUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/invites`
 }
 
-export const getInvites = async (
-  slug: string,
-  options?: RequestInit
-): Promise<GetInvites200> => {
-  const res = await fetch(getGetInvitesUrl(slug), {
+export const getInvites = async (slug: string, options?: RequestInit): Promise<getInvitesResponse> => {
+  
+  const res = await fetch(getGetInvitesUrl(slug),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetInvites200 = body ? JSON.parse(body) : {}
+  const data: getInvitesResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getInvitesResponse
 }
+
+
 
 /**
  * @summary Create a new invite
  */
-export const getCreateInviteUrl = (slug: string) => {
+export type createInviteResponse201 = {
+  data: CreateInvite201
+  status: 201
+}
+    
+export type createInviteResponseComposite = createInviteResponse201;
+    
+export type createInviteResponse = createInviteResponseComposite & {
+  headers: Headers;
+}
+
+export const getCreateInviteUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/invites`
 }
 
-export const createInvite = async (
-  slug: string,
-  createInviteBody: CreateInviteBody,
-  options?: RequestInit
-): Promise<CreateInvite201> => {
-  const res = await fetch(getCreateInviteUrl(slug), {
+export const createInvite = async (slug: string,
+    createInviteBody: CreateInviteBody, options?: RequestInit): Promise<createInviteResponse> => {
+  
+  const res = await fetch(getCreateInviteUrl(slug),
+  {      
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(createInviteBody),
-  })
+    body: JSON.stringify(
+      createInviteBody,)
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: CreateInvite201 = body ? JSON.parse(body) : {}
+  const data: createInviteResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as createInviteResponse
 }
+
+
 
 /**
  * @summary Get all user pending invites
  */
+export type getPendingInvitesResponse200 = {
+  data: GetPendingInvites200
+  status: 200
+}
+    
+export type getPendingInvitesResponseComposite = getPendingInvitesResponse200;
+    
+export type getPendingInvitesResponse = getPendingInvitesResponseComposite & {
+  headers: Headers;
+}
+
 export const getGetPendingInvitesUrl = () => {
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+
+
+  
+
   return `http://localhost:3333/pending-invites`
 }
 
-export const getPendingInvites = async (
-  options?: RequestInit
-): Promise<GetPendingInvites200> => {
-  const res = await fetch(getGetPendingInvitesUrl(), {
+export const getPendingInvites = async ( options?: RequestInit): Promise<getPendingInvitesResponse> => {
+  
+  const res = await fetch(getGetPendingInvitesUrl(),
+  {      
     ...options,
-    method: 'POST',
-  })
+    method: 'POST'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetPendingInvites200 = body ? JSON.parse(body) : {}
+  const data: getPendingInvitesResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getPendingInvitesResponse
 }
+
+
 
 /**
  * @summary Accept an invite
  */
-export const getAcceptInviteUrl = (inviteId: string) => {
+export type acceptInviteResponse204 = {
+  data: AcceptInvite204
+  status: 204
+}
+    
+export type acceptInviteResponseComposite = acceptInviteResponse204;
+    
+export type acceptInviteResponse = acceptInviteResponseComposite & {
+  headers: Headers;
+}
+
+export const getAcceptInviteUrl = (inviteId: string,) => {
+
+
+  
+
   return `http://localhost:3333/invites/${inviteId}/accept`
 }
 
-export const acceptInvite = async (
-  inviteId: string,
-  options?: RequestInit
-): Promise<AcceptInvite204> => {
-  const res = await fetch(getAcceptInviteUrl(inviteId), {
+export const acceptInvite = async (inviteId: string, options?: RequestInit): Promise<acceptInviteResponse> => {
+  
+  const res = await fetch(getAcceptInviteUrl(inviteId),
+  {      
     ...options,
-    method: 'POST',
-  })
+    method: 'POST'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: AcceptInvite204 = body ? JSON.parse(body) : {}
+  const data: acceptInviteResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as acceptInviteResponse
 }
+
+
 
 /**
  * @summary Accept an invite
  */
-export const getRejectInviteUrl = (inviteId: string) => {
+export type rejectInviteResponse204 = {
+  data: RejectInvite204
+  status: 204
+}
+    
+export type rejectInviteResponseComposite = rejectInviteResponse204;
+    
+export type rejectInviteResponse = rejectInviteResponseComposite & {
+  headers: Headers;
+}
+
+export const getRejectInviteUrl = (inviteId: string,) => {
+
+
+  
+
   return `http://localhost:3333/invites/${inviteId}/reject`
 }
 
-export const rejectInvite = async (
-  inviteId: string,
-  options?: RequestInit
-): Promise<RejectInvite204> => {
-  const res = await fetch(getRejectInviteUrl(inviteId), {
+export const rejectInvite = async (inviteId: string, options?: RequestInit): Promise<rejectInviteResponse> => {
+  
+  const res = await fetch(getRejectInviteUrl(inviteId),
+  {      
     ...options,
-    method: 'POST',
-  })
+    method: 'POST'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: RejectInvite204 = body ? JSON.parse(body) : {}
+  const data: rejectInviteResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as rejectInviteResponse
 }
+
+
 
 /**
  * @summary Revoke a invite
  */
-export const getRevokeInviteUrl = (slug: string, inviteId: string) => {
+export type revokeInviteResponse204 = {
+  data: RevokeInvite204
+  status: 204
+}
+    
+export type revokeInviteResponseComposite = revokeInviteResponse204;
+    
+export type revokeInviteResponse = revokeInviteResponseComposite & {
+  headers: Headers;
+}
+
+export const getRevokeInviteUrl = (slug: string,
+    inviteId: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/invites/${inviteId}`
 }
 
-export const revokeInvite = async (
-  slug: string,
-  inviteId: string,
-  options?: RequestInit
-): Promise<RevokeInvite204> => {
-  const res = await fetch(getRevokeInviteUrl(slug, inviteId), {
+export const revokeInvite = async (slug: string,
+    inviteId: string, options?: RequestInit): Promise<revokeInviteResponse> => {
+  
+  const res = await fetch(getRevokeInviteUrl(slug,inviteId),
+  {      
     ...options,
-    method: 'POST',
-  })
+    method: 'POST'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: RevokeInvite204 = body ? JSON.parse(body) : {}
+  const data: revokeInviteResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as revokeInviteResponse
 }
+
+
 
 /**
  * @summary Get billing information for an organization
  */
-export const getGetOrganizationBillingUrl = (slug: string) => {
+export type getOrganizationBillingResponse200 = {
+  data: GetOrganizationBilling200
+  status: 200
+}
+    
+export type getOrganizationBillingResponseComposite = getOrganizationBillingResponse200;
+    
+export type getOrganizationBillingResponse = getOrganizationBillingResponseComposite & {
+  headers: Headers;
+}
+
+export const getGetOrganizationBillingUrl = (slug: string,) => {
+
+
+  
+
   return `http://localhost:3333/organizations/${slug}/billing`
 }
 
-export const getOrganizationBilling = async (
-  slug: string,
-  options?: RequestInit
-): Promise<GetOrganizationBilling200> => {
-  const res = await fetch(getGetOrganizationBillingUrl(slug), {
+export const getOrganizationBilling = async (slug: string, options?: RequestInit): Promise<getOrganizationBillingResponse> => {
+  
+  const res = await fetch(getGetOrganizationBillingUrl(slug),
+  {      
     ...options,
-    method: 'GET',
-  })
+    method: 'GET'
+    
+    
+  }
+)
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text()
-  const data: GetOrganizationBilling200 = body ? JSON.parse(body) : {}
+  const data: getOrganizationBillingResponse['data'] = body ? JSON.parse(body) : {}
 
-  return data
+  return { data, status: res.status, headers: res.headers } as getOrganizationBillingResponse
 }
