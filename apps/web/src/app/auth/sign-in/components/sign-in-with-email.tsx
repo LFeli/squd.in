@@ -1,15 +1,16 @@
 'use client'
 
-import { Loader2Icon } from 'lucide-react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader2Icon } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { signInWithEmailAction } from '../actions'
 import {
@@ -18,18 +19,36 @@ import {
 } from '../validation'
 
 export function SignInWithEmail() {
+  const router = useRouter()
   const searchParams = useSearchParams()
 
   const {
-    handleSubmit,
     register,
+    handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<SignInWithEmailSchema>({
     resolver: zodResolver(signInWithEmailSchema),
   })
 
+  async function onSubmitForm(data: SignInWithEmailSchema) {
+    const formData = new FormData()
+
+    formData.append('email', data.email)
+    formData.append('password', data.password)
+
+    const { success, message } = await signInWithEmailAction(formData)
+
+    if (success === false && message) {
+      toast.error(message)
+    }
+
+    if (success) {
+      router.push('/')
+    }
+  }
+
   return (
-    <form onSubmit={handleSubmit(signInWithEmailAction)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmitForm)} className="space-y-4">
       <article className="block space-y-3">
         <Label htmlFor="email">E-mail</Label>
         <Input
