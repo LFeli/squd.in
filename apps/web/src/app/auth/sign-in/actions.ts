@@ -2,31 +2,39 @@
 
 import { cookies } from 'next/headers'
 
-import type { FormState } from '@/types/form'
-import { type SignInWithEmailSchema, signInWithEmailSchema } from './validation'
-
 import { acceptInvite, authenticateWithPassword } from '@/http/api'
+import type { FormState } from '@/types/form'
+import { isHttpError } from '@/utils/is-http-error'
+
+import { signInWithEmailSchema } from './validation'
 
 export async function signInWithEmailAction(
-  data: SignInWithEmailSchema
+  data: FormData
 ): Promise<FormState> {
-  const result = signInWithEmailSchema.safeParse(data)
+  const result = signInWithEmailSchema.safeParse(Object.fromEntries(data))
 
   if (!result.success) {
     return {
       success: false,
-      message: null,
-      errors: result.error.flatten().fieldErrors,
+      message: 'Something went wrong, please try again',
+      errors: null,
     }
   }
 
   const { email, password } = result.data
 
   try {
-    const { token } = await authenticateWithPassword({
+    const {
+      data: { token },
+      status,
+    } = await authenticateWithPassword({
       email,
       password,
     })
+
+    if (isHttpError(status)) {
+      throw new Error()
+    }
 
     const cookie = await cookies()
     cookie.set('token', token, { path: '/', maxAge: 60 * 60 * 24 * 7 }) // 7 days
