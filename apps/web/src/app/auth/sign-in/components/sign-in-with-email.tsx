@@ -6,9 +6,10 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { usePasswordVisibility } from '@/hooks/use-password-visibility'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2Icon } from 'lucide-react'
+import { EyeIcon, EyeOffIcon, Loader2Icon } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -21,6 +22,7 @@ import {
 export function SignInWithEmail() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { isVisible, toggleVisibility } = usePasswordVisibility()
 
   const {
     register,
@@ -66,12 +68,31 @@ export function SignInWithEmail() {
 
       <article className="block space-y-3">
         <Label htmlFor="password">Password</Label>
-        <Input
-          type="password"
-          id="password"
-          disabled={isSubmitting}
-          {...register('password')}
-        />
+        <div className="relative">
+          <Input
+            type={isVisible ? 'text' : 'password'}
+            id="password"
+            className="pr-12"
+            disabled={isSubmitting}
+            {...register('password')}
+          />
+
+          <Button
+            variant={'link'}
+            size={'icon'}
+            type="button"
+            onClick={toggleVisibility}
+            className="absolute top-0 right-2 cursor-pointer"
+            disabled={isSubmitting}
+            aria-label={isVisible ? 'hide password' : 'show password'}
+          >
+            {isVisible ? (
+              <EyeOffIcon className="size-4" />
+            ) : (
+              <EyeIcon className="size-4" />
+            )}
+          </Button>
+        </div>
 
         {errors.password && (
           <p className="text-red-500 text-xs">{errors.password.message}</p>
