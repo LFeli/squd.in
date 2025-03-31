@@ -1,10 +1,12 @@
 'use server'
 
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 import { acceptInvite, authenticateWithPassword } from '@/http/api'
 import type { FormState } from '@/types/form'
 import { isHttpError } from '@/utils/is-http-error'
+import { env } from '@squd-in/env'
 
 import { signInWithEmailSchema } from './validation'
 
@@ -58,6 +60,14 @@ export async function signInWithEmailAction(
 }
 
 export async function signInWithGithubAction(): Promise<void> {
-  await new Promise(resolve => setTimeout(resolve, 5000))
-  console.log('sign in with github')
+  const githubSignInURL = new URL('login/oauth/authorize', 'https://github.com')
+
+  githubSignInURL.searchParams.set('client_id', env.GITHUB_OAUTH_CLIENT_ID)
+  githubSignInURL.searchParams.set(
+    'redirect_uri',
+    env.GITHUB_OAUTH_CLIENT_REDIRECT_URI
+  )
+  githubSignInURL.searchParams.set('scope', 'user')
+
+  redirect(githubSignInURL.toString())
 }
