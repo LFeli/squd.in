@@ -22,7 +22,7 @@ export async function authenticateUser() {
     const {
       data: { user },
       status,
-    } = await getProfile()
+    } = await getProfile({ headers: { Authorization: `Bearer ${token}` } })
 
     if (isHttpError(status)) {
       throw new Error()
@@ -31,5 +31,5 @@ export async function authenticateUser() {
     return { user }
   } catch {}
 
-  return redirect('/auth/sign-in')
+  return redirect('/auth/sign-out')
 }
