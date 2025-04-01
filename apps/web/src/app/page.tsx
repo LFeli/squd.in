@@ -1,3 +1,7 @@
-export default function Home() {
-  return <h1>Hello World</h1>
+import { authenticateUser } from '@/helpers/auth'
+
+export default async function Home() {
+  const { user } = await authenticateUser()
+
+  return <pre>{JSON.stringify(user, null, 2)}</pre>
 }
