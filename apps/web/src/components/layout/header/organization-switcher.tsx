@@ -1,5 +1,9 @@
 import { ChevronsUpDownIcon, PlusCircleIcon } from 'lucide-react'
 
+import { cookies } from 'next/headers'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   DropdownMenu,
@@ -10,9 +14,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import Link from 'next/link'
+import { getOrganizations } from '@/http/api'
 
-export function OrganizationSwitcher() {
+export async function OrganizationSwitcher() {
+  const cookie = await cookies()
+  const token = cookie.get('token')?.value
+
+  if (!token) {
+    return redirect('/auth/sign-in')
+  }
+
+  const {
+    data: { organizations },
+    status,
+  } = await getOrganizations({ headers: { Authorization: `Bearer ${token}` } })
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex w-[168px] items-center gap-3 rounded p-1 font-medium text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary">
@@ -29,14 +45,34 @@ export function OrganizationSwitcher() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Organizations</DropdownMenuLabel>
 
-          <DropdownMenuItem>
+          {/* <DropdownMenuItem>
             <Avatar className="mr-2 size-4">
               <AvatarImage src="https://github.com/rocketseat.png" />
               <AvatarFallback />
             </Avatar>
 
             <span className="line-clamp-1 w-full truncate">Rocketseat</span>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
+
+          {organizations.map(organization => {
+            return (
+              <DropdownMenuItem key={organization.id} asChild>
+                <Link href={`/org/${organization.slug}`}>
+                  <Avatar className="mr-2 size-4">
+                    {organization.avatarUrl && (
+                      <AvatarImage src={organization.avatarUrl} />
+                    )}
+
+                    <AvatarFallback />
+                  </Avatar>
+
+                  <span className="line-clamp-1 w-full truncate">
+                    {organization.name}
+                  </span>
+                </Link>
+              </DropdownMenuItem>
+            )
+          })}
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
