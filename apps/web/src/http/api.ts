@@ -93,6 +93,7 @@ export const GetMembership200MembershipRole = {  ADMIN: 'ADMIN',
 export type GetMembership200Membership = {
   id: string;
   organizationId: string;
+  userId: string;
   role: typeof GetMembership200MembershipRole[keyof typeof GetMembership200MembershipRole] ;
 };
 
