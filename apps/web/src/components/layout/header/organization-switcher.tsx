@@ -19,6 +19,7 @@ import { getOrganizations } from '@/http/api'
 export async function OrganizationSwitcher() {
   const cookie = await cookies()
   const token = cookie.get('token')?.value
+  const org = cookie.get('org')?.value
 
   if (!token) {
     return redirect('/auth/sign-in')
@@ -26,13 +27,35 @@ export async function OrganizationSwitcher() {
 
   const {
     data: { organizations },
-    status,
   } = await getOrganizations({ headers: { Authorization: `Bearer ${token}` } })
+
+  const currentOrganization = organizations.find(
+    organization => organization.slug === org
+  )
+
+  console.log(org)
+  console.log(currentOrganization)
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex w-[168px] items-center gap-3 rounded p-1 font-medium text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary">
-        <span className="text-muted-foreground">Select Organization</span>
+        {currentOrganization ? (
+          <>
+            <Avatar className="mr-2 size-4">
+              {currentOrganization.avatarUrl && (
+                <AvatarImage src={currentOrganization.avatarUrl} />
+              )}
+              <AvatarFallback />
+            </Avatar>
+
+            <span className="truncate text-left">
+              {currentOrganization.name}
+            </span>
+          </>
+        ) : (
+          <span className="text-muted-foreground">Select Organization</span>
+        )}
+
         <ChevronsUpDownIcon className="ml-auto size-4 text-muted-foreground" />
       </DropdownMenuTrigger>
 
@@ -44,15 +67,6 @@ export async function OrganizationSwitcher() {
       >
         <DropdownMenuGroup>
           <DropdownMenuLabel>Organizations</DropdownMenuLabel>
-
-          {/* <DropdownMenuItem>
-            <Avatar className="mr-2 size-4">
-              <AvatarImage src="https://github.com/rocketseat.png" />
-              <AvatarFallback />
-            </Avatar>
-
-            <span className="line-clamp-1 w-full truncate">Rocketseat</span>
-          </DropdownMenuItem> */}
 
           {organizations.map(organization => {
             return (
