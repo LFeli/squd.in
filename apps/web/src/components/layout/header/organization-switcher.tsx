@@ -14,12 +14,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { getCurrentOrg } from '@/helpers/auth'
 import { getOrganizations } from '@/http/api'
 
 export async function OrganizationSwitcher() {
   const cookie = await cookies()
   const token = cookie.get('token')?.value
-  const org = cookie.get('org')?.value
+  const org = await getCurrentOrg()
 
   if (!token) {
     return redirect('/auth/sign-in')
@@ -32,9 +33,6 @@ export async function OrganizationSwitcher() {
   const currentOrganization = organizations.find(
     organization => organization.slug === org
   )
-
-  console.log(org)
-  console.log(currentOrganization)
 
   return (
     <DropdownMenu>
