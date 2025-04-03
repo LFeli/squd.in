@@ -1,12 +1,16 @@
 import Image from 'next/image'
 
-import rocketseatIcon from '@/assets/rocketseat-icon.svg'
-
 import { SlashIcon } from 'lucide-react'
+
+import rocketseatIcon from '@/assets/rocketseat-icon.svg'
+import { ability } from '@/helpers/auth'
+
 import { OrganizationSwitcher } from './organization-switcher'
 import { ProfileButton } from './profile-button'
 
-export function HeaderComponent() {
+export async function HeaderComponent() {
+  const permissions = await ability()
+
   return (
     <header className="w-full border-b px-8 py-4">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between">
@@ -22,6 +26,8 @@ export function HeaderComponent() {
           <SlashIcon className="-rotate-[24deg] size-3 text-border" />
 
           <OrganizationSwitcher />
+
+          {permissions?.can('get', 'Project') && <p>Project</p>}
         </div>
 
         <div className="flex items-center gap-4">
