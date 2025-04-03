@@ -17,7 +17,7 @@ export async function ProfileButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-4 outline-none">
-        <Avatar>
+        <Avatar className="size-8">
           {user.avatarUrl && <AvatarImage src={user.avatarUrl} />}
           {user.name && (
             <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
