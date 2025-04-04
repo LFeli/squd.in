@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 
 import '../styles/global.css'
 
+import { Providers } from './providers'
+
 export const metadata: Metadata = {
   title: 'Squd.In Inc',
 }
@@ -12,8 +14,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={'antialiased'}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={'antialiased'}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
