@@ -3,10 +3,12 @@ import Image from 'next/image'
 import { SlashIcon } from 'lucide-react'
 
 import rocketseatIcon from '@/assets/rocketseat-icon.svg'
+import { Separator } from '@/components/ui/separator'
 import { ability } from '@/helpers/auth'
 
 import { OrganizationSwitcher } from './organization-switcher'
 import { ProfileButton } from './profile-button'
+import { ThemeSwitcher } from './theme-switcher'
 
 export async function HeaderComponent() {
   const permissions = await ability()
@@ -31,6 +33,10 @@ export async function HeaderComponent() {
         </div>
 
         <div className="flex items-center gap-4">
+          <ThemeSwitcher />
+
+          <Separator orientation="vertical" className="h-5" />
+
           <ProfileButton />
         </div>
       </div>
