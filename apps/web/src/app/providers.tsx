@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/sonner'
 import { ThemeProvider } from 'next-themes'
 
 interface ProvidersProps {
@@ -12,6 +13,7 @@ export function Providers({ children }: ProvidersProps) {
       disableTransitionOnChange
     >
       {children}
+      <Toaster closeButton richColors />
     </ThemeProvider>
   )
 }
