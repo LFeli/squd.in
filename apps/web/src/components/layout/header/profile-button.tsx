@@ -32,7 +32,7 @@ export async function ProfileButton() {
         <ChevronsUpDownIcon className="size-4 text-muted-foreground" />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" sideOffset={8} className="min-w-56">
+      <DropdownMenuContent align="end" sideOffset={8} className="min-w-36">
         <DropdownMenuItem asChild>
           <a href="/api/auth/sign-out">
             <LogOutIcon className="mr-2 size-4" />
