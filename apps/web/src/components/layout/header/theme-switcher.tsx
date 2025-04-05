@@ -10,20 +10,26 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { useMounted } from '@/hooks/use-mounted'
 
 export function ThemeSwitcher() {
   const { resolvedTheme, setTheme } = useTheme()
+  const mounted = useMounted()
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          {resolvedTheme === 'light' && (
-            <SunIcon className="size-4 dark:invisible dark:size-0" />
+          {mounted && resolvedTheme === 'light' && (
+            <SunIcon className="size-4" />
           )}
-          {resolvedTheme === 'dark' && (
-            <MoonIcon className="invisible size-0 dark:visible dark:size-4" />
+
+          {mounted && resolvedTheme === 'dark' && (
+            <MoonIcon className="size-4" />
           )}
+
+          {!mounted && <span className="size-4" />}
+
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
