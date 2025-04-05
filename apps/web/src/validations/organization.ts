@@ -14,7 +14,7 @@ const parseAttachUsersByDomain = (value: 'on' | 'off' | boolean): boolean => {
   return value === true || value === 'on'
 }
 
-const organizationFormSchema = z
+export const organizationFormSchema = z
   .object({
     name: z
       .string()
