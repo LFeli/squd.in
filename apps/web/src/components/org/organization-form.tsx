@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader2Icon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 
 import {
@@ -8,7 +9,6 @@ import {
   organizationFormSchema,
 } from '@/validations/organization'
 
-import { Loader2Icon } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Checkbox } from '../ui/checkbox'
 import { Input } from '../ui/input'
