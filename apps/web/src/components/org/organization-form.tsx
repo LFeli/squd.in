@@ -3,7 +3,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2Icon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
+import {
+  createOrganizationAction,
+  updateOrganizationAction,
+} from '@/actions/organization'
 import {
   type OrganizationFormSchema,
   organizationFormSchema,
@@ -23,9 +28,14 @@ export function OrganizationForm({
   isUpdating = false,
   initialData,
 }: OrganizationFormProps) {
+  const formAction = isUpdating
+    ? updateOrganizationAction
+    : createOrganizationAction
+
   const {
     control,
     register,
+    reset,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<OrganizationFormSchema>({
@@ -36,11 +46,23 @@ export function OrganizationForm({
     const formData = new FormData()
 
     formData.append('name', data.name)
-    formData.append('domain', String(data.domain))
+    formData.append('domain', data.domain ?? '')
     formData.append(
       'shouldAttachUsersByDomain',
-      String(data.shouldAttachUsersByDomain)
+      data.shouldAttachUsersByDomain ? 'true' : 'false'
     )
+
+    const { success, message } = await formAction(formData)
+
+    if (success === false && message) {
+      toast.error(message)
+    }
+
+    if (success) {
+      toast.success(message)
+
+      // reset()
+    }
   }
 
   return (
