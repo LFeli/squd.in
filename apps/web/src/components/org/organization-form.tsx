@@ -61,7 +61,7 @@ export function OrganizationForm({
     if (success) {
       toast.success(message)
 
-      // reset()
+      reset()
     }
   }
 
