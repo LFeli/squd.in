@@ -8,7 +8,7 @@ import {
 
 export default function CreateOrganizationSheet() {
   return (
-    <Sheet defaultOpen open={true}>
+    <Sheet defaultOpen>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Create organization</SheetTitle>
