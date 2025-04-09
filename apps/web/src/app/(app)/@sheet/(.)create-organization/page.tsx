@@ -1,15 +1,11 @@
 import { OrganizationForm } from '@/components/org/organization-form'
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet'
+import { SheetContentIntercepted } from '@/components/org/sheet-content-intercepted'
+import { Sheet, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 
 export default function CreateOrganizationSheet() {
   return (
     <Sheet defaultOpen>
-      <SheetContent>
+      <SheetContentIntercepted>
         <SheetHeader>
           <SheetTitle>Create organization</SheetTitle>
         </SheetHeader>
@@ -17,7 +13,7 @@ export default function CreateOrganizationSheet() {
         <div className="p-4">
           <OrganizationForm />
         </div>
-      </SheetContent>
+      </SheetContentIntercepted>
     </Sheet>
   )
 }
