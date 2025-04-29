@@ -1,17 +1,28 @@
-import { env } from '@squd-in/env'
 import { defineConfig } from 'orval'
 
-const API_URL = env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3333'
-
-const API_INPUT = `${API_URL}/docs/json`
-
+/**
+ * Configuration for Orval API client generation.
+ *
+ * This config generates an API client based on the OpenAPI specification found
+ * at the provided `input` URL, and it customizes the output for the API client
+ * with options like the HTTP client, target file path, and custom mutator.
+ *
+ * @returns {object} Orval configuration object
+ *
+ * @example
+ * // The following Orval config will generate a single API client
+ * // and place it in './src/http/api.ts' based on the OpenAPI specification
+ * // found at 'http://localhost:3333/docs/json'.
+ *
+ * for generate run `npm run orval` inside in apps/web
+ */
 export default defineConfig({
   api: {
-    input: API_INPUT,
+    input: 'http://localhost:3333/docs/json',
 
     output: {
       mode: 'single',
-      baseUrl: API_URL,
+      baseUrl: 'http://localhost:3333',
 
       target: './src/http/api.ts',
       httpClient: 'fetch',
