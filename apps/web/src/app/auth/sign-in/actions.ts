@@ -5,7 +5,6 @@ import { redirect } from 'next/navigation'
 
 import { acceptInvite, authenticateWithPassword } from '@/http/api'
 import type { FormState } from '@/types/form'
-import { isHttpError } from '@/utils/is-http-error'
 import { env } from '@squd-in/env'
 
 import { signInWithEmailSchema } from './validation'
@@ -28,15 +27,10 @@ export async function signInWithEmailAction(
   try {
     const {
       data: { token },
-      status,
     } = await authenticateWithPassword({
       email,
       password,
     })
-
-    if (isHttpError(status)) {
-      throw new Error()
-    }
 
     const cookie = await cookies()
     cookie.set('token', token, { path: '/', maxAge: 60 * 60 * 24 * 7 }) // 7 days
