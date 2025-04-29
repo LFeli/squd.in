@@ -1,35 +1,41 @@
 import { getCookie } from '@/utils/get-cookie'
 
+/**
+ * Custom fetcher function for Orval to perform authenticated API requests.
+ *
+ * Automatically attaches a Bearer token from cookies if available,
+ * sets the 'Content-Type' header to 'application/json',
+ * and parses the response as JSON or text fallback.
+ *
+ * @template T - Expected type of the response data.
+ * @param {RequestInfo} input - URL or Request object.
+ * @param {RequestInit} [init={}] - Optional fetch configuration.
+ * @returns {Promise<{ data: T }>} A Promise resolving to an object containing the parsed response data.
+ *
+ */
 export async function fetcher<T>(
   input: RequestInfo,
   init: RequestInit = {}
-): Promise<T> {
-  // 1) Grab token however you need to
-  let token: string | null = null
+): Promise<{ data: T }> {
+  const token = await getCookie('token')
 
-  token = await getCookie('token')
-
-  // 2) Build headers
   const headers = new Headers(init.headers)
   headers.set('Content-Type', 'application/json')
+
   if (token) {
     headers.set('Authorization', `Bearer ${token}`)
   }
 
-  // 3) Do the real fetch
   const response = await fetch(input, { ...init, headers })
 
-  // 4) Parse body as JSON (or text fallback)
-  const contentType = response.headers.get('content-type') || ''
+  const contentType = response.headers.get('content-type') ?? ''
   const data = contentType.includes('application/json')
     ? await response.json()
     : await response.text()
 
-  // 5) If non‐2xx, throw so your callers can catch
   if (!response.ok) {
-    throw Error()
+    throw new Error()
   }
 
-  // 6) Return only the JSON payload (T)
-  return { data: data } as T
+  return { data: data as T }
 }
