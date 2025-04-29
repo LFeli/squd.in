@@ -5,17 +5,26 @@ export default defineConfig({
     input: 'http://localhost:3333/docs/json',
 
     output: {
-      target: './src/http/api.ts',
-
+      mode: 'single',
       baseUrl: 'http://localhost:3333',
-      client: 'fetch',
+
+      target: './src/http/api.ts',
       httpClient: 'fetch',
+      client: 'fetch',
+
+      mock: false,
+      biome: true,
       clean: true,
 
+      urlEncodeParameters: true,
+
       override: {
-        fetch: {
-          includeHttpResponseReturnType: true,
+        mutator: {
+          path: './src/lib/fetcher.ts',
+          name: 'fetcher',
         },
+
+        suppressReadonlyModifier: true,
       },
     },
   },
