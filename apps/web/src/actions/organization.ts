@@ -41,23 +41,14 @@ export async function createOrganizationAction(
     }
   }
 
-  const { name, domain, shouldAttachUsersByDomain } = result.data
-
   try {
-    const token = await isAuthenticated()
+    const { name, domain, shouldAttachUsersByDomain } = result.data
 
-    const { status } = await createOrganization(
-      {
-        name,
-        domain,
-        shouldAttachUsersByDomain,
-      },
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
-
-    if (isHttpError(status)) {
-      throw new Error()
-    }
+    await createOrganization({
+      name,
+      domain,
+      shouldAttachUsersByDomain,
+    })
 
     revalidateTag('organizations')
   } catch {
@@ -98,24 +89,14 @@ export async function updateOrganizationAction(
     }
   }
 
-  const { name, domain, shouldAttachUsersByDomain } = result.data
-
   try {
-    const token = await isAuthenticated()
+    const { name, domain, shouldAttachUsersByDomain } = result.data
 
-    const { status } = await updateOrganization(
-      currentOrg,
-      {
-        name,
-        domain,
-        shouldAttachUsersByDomain,
-      },
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
-
-    if (isHttpError(status)) {
-      throw new Error()
-    }
+    await updateOrganization(currentOrg, {
+      name,
+      domain,
+      shouldAttachUsersByDomain,
+    })
 
     revalidateTag('organizations')
   } catch {

@@ -17,18 +17,14 @@ export async function signUpAction(data: FormData): Promise<FormState> {
     }
   }
 
-  const { name, email, password } = result.data
-
   try {
-    const { status } = await createAccount({
+    const { name, email, password } = result.data
+
+    await createAccount({
       name,
       email,
       password,
     })
-
-    if (isHttpError(status)) {
-      throw new Error()
-    }
   } catch {
     return {
       success: false,

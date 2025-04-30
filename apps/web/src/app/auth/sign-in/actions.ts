@@ -22,9 +22,9 @@ export async function signInWithEmailAction(
     }
   }
 
-  const { email, password } = result.data
-
   try {
+    const { email, password } = result.data
+
     const {
       data: { token },
     } = await authenticateWithPassword({
