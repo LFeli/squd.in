@@ -2,7 +2,6 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { getMembership, getProfile } from '@/http/api'
-import { isHttpError } from '@/utils/is-http-error'
 import { defineAbilityFor } from '@squd-in/auth'
 
 export async function isAuthenticated() {
@@ -28,14 +27,9 @@ export async function getCurrentMembership() {
 
   const {
     data: { membership },
-    status,
   } = await getMembership(org, {
     headers: { Authorization: `Bearer ${token}` },
   })
-
-  if (isHttpError(status)) {
-    return null
-  }
 
   return membership
 }
@@ -66,12 +60,7 @@ export async function authenticateUser() {
   try {
     const {
       data: { user },
-      status,
     } = await getProfile({ headers: { Authorization: `Bearer ${token}` } })
-
-    if (isHttpError(status)) {
-      throw new Error()
-    }
 
     return { user }
   } catch {}
