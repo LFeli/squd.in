@@ -1,4 +1,5 @@
-// import { createProject } from '@/http/api'
+import { getCurrentOrg } from '@/helpers/auth'
+import { createProject } from '@/http/api'
 import type { FormState } from '@/types/form'
 
 import { createProjectFormSchema } from './validation'
@@ -15,13 +16,17 @@ export async function createProjectAction(data: FormData): Promise<FormState> {
   }
 
   const { name, description } = result.data
+  const org = await getCurrentOrg()
 
   try {
-    // await createProject(shouldAttachUsersByDomain, {
-    //   name,
-    //   description,
-    // })
-    console.log('i stay in try...')
+    if (!org) {
+      throw Error()
+    }
+
+    await createProject(org, {
+      name,
+      description,
+    })
   } catch {
     return {
       success: false,
