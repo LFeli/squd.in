@@ -10,6 +10,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { Skeleton } from '@/components/ui/skeleton'
+
 import { useMounted } from '@/hooks/use-mounted'
 
 export function ThemeSwitcher() {
@@ -28,7 +30,7 @@ export function ThemeSwitcher() {
             <MoonIcon className="size-4" />
           )}
 
-          {!mounted && <span className="size-4" />}
+          {!mounted && <Skeleton className="size-4 rounded-full" />}
 
           <span className="sr-only">Toggle theme</span>
         </Button>
