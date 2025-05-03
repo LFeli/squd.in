@@ -1,8 +1,7 @@
 'use server'
 
-import { createAccount } from '@/http/api'
+import { createAccount } from '@/http/auth/auth'
 import type { FormState } from '@/types/form'
-import { isHttpError } from '@/utils/is-http-error'
 
 import { signUpSchema } from './validation'
 

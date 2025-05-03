@@ -3,10 +3,11 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-import { acceptInvite, authenticateWithPassword } from '@/http/api'
+import { authenticateWithPassword } from '@/http/auth/auth'
 import type { FormState } from '@/types/form'
 import { env } from '@squd-in/env'
 
+import { acceptInvite } from '@/http/invites/invites'
 import { signInWithEmailSchema } from './validation'
 
 export async function signInWithEmailAction(
