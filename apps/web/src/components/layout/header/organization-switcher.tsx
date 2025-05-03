@@ -1,8 +1,6 @@
-import { ChevronsUpDownIcon, PlusCircleIcon } from 'lucide-react'
-
-import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
+
+import { ChevronsUpDownIcon, PlusCircleIcon } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -14,25 +12,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+
 import { getCurrentOrg } from '@/helpers/auth'
-import { getOrganizations } from '@/http/api'
+import { getOrganizations } from '@/http/organizations/organizations'
 
 export async function OrganizationSwitcher() {
-  const cookie = await cookies()
-  const token = cookie.get('token')?.value
-  const org = await getCurrentOrg()
-
-  if (!token) {
-    return redirect('/auth/sign-in')
-  }
-
+  const currentOrg = await getCurrentOrg()
   const {
     data: { organizations },
-  } = await getOrganizations({ headers: { Authorization: `Bearer ${token}` } })
+  } = await getOrganizations()
 
-  const currentOrganization = organizations.find(
-    organization => organization.slug === org
-  )
+  const currentOrganization = organizations.find(org => org.slug === currentOrg)
 
   return (
     <DropdownMenu>
@@ -65,6 +55,7 @@ export async function OrganizationSwitcher() {
       >
         <DropdownMenuGroup>
           <DropdownMenuLabel>Organizations</DropdownMenuLabel>
+          <DropdownMenuSeparator />
 
           {organizations.map(organization => {
             return (
