@@ -1,9 +1,12 @@
-'use client'
-
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2Icon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 import {
   createOrganizationAction,
@@ -13,11 +16,6 @@ import {
   type OrganizationFormSchema,
   organizationFormSchema,
 } from '@/validations/organization'
-
-import { Button } from '../ui/button'
-import { Checkbox } from '../ui/checkbox'
-import { Input } from '../ui/input'
-import { Label } from '../ui/label'
 
 interface OrganizationFormProps {
   isUpdating?: boolean
