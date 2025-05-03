@@ -18,7 +18,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { getProjects } from '@/http/api'
+import type { GetProjects200ProjectsItem } from '@/http/api.schemas'
+import { getProjects } from '@/http/projects/projects'
 
 export function ProjectSwitcher() {
   const { slug: orgSlug, project: projectSlug } = useParams<{
@@ -36,41 +37,17 @@ export function ProjectSwitcher() {
     enabled: Boolean(orgSlug),
   })
 
-  const currentProject =
-    data && projectSlug
-      ? data.projects.find(project => project.slug === projectSlug)
-      : null
+  const currentProject = data?.projects?.find(
+    project => project.slug === projectSlug
+  )
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex w-[168px] items-center gap-2 rounded p-1 font-medium text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary">
-        {isLoading ? (
-          <>
-            <Skeleton className="size-4 rounded-full" />
-            <Skeleton className="h-4 w-full flex-1" />
-          </>
-        ) : (
-          <>
-            {currentProject ? (
-              <>
-                <Avatar className="size-4">
-                  {currentProject.avatarUrl && (
-                    <AvatarImage src={currentProject.avatarUrl} />
-                  )}
-                  <AvatarFallback />
-                </Avatar>
-                <span className="truncate text-left">
-                  {currentProject.name}
-                </span>
-              </>
-            ) : (
-              <span className="text-muted-foreground">Select project</span>
-            )}
-          </>
-        )}
+        <ProjectDisplay isLoading={isLoading} project={currentProject} />
 
         {isLoading ? (
-          <Loader2Icon className="ml-auto size-4 shrink-0 animate-spin text-muted-foreground" />
+          <Loader2Icon className="ml-auto size-4 animate-spin text-muted-foreground" />
         ) : (
           <ChevronsUpDownIcon className="ml-auto size-4 shrink-0 text-muted-foreground" />
         )}
@@ -85,7 +62,6 @@ export function ProjectSwitcher() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Projects</DropdownMenuLabel>
           <DropdownMenuSeparator />
-
           {data?.projects?.map(project => (
             <DropdownMenuItem key={project.id} asChild>
               <Link href={`/org/${orgSlug}/project/${project.slug}`}>
@@ -109,5 +85,36 @@ export function ProjectSwitcher() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+  )
+}
+
+function ProjectDisplay({
+  isLoading,
+  project,
+}: {
+  isLoading: boolean
+  project?: GetProjects200ProjectsItem | undefined
+}) {
+  if (isLoading) {
+    return (
+      <>
+        <Skeleton className="size-4 rounded-full" />
+        <Skeleton className="h-4 w-full flex-1" />
+      </>
+    )
+  }
+
+  if (!project) {
+    return <span className="text-muted-foreground">Select project</span>
+  }
+
+  return (
+    <>
+      <Avatar className="size-4">
+        {project.avatarUrl && <AvatarImage src={project.avatarUrl} />}
+        <AvatarFallback />
+      </Avatar>
+      <span className="truncate text-left">{project.name}</span>
+    </>
   )
 }
