@@ -1,5 +1,7 @@
 'use client'
 
+import { useParams } from 'next/navigation'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2Icon } from 'lucide-react'
 import { useForm } from 'react-hook-form'
@@ -9,6 +11,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
+import { queryClient } from '@/lib/react-query'
+
 import { createProjectAction } from '../actions'
 import {
   type CreateProjectFormSchema,
@@ -16,6 +20,8 @@ import {
 } from '../validation'
 
 export function ProjectForm() {
+  const { slug: org } = useParams<{ slug: string }>()
+
   const {
     register,
     handleSubmit,
@@ -38,6 +44,10 @@ export function ProjectForm() {
 
     if (success) {
       toast.error(message)
+
+      queryClient.invalidateQueries({
+        queryKey: [org, 'projects'],
+      })
     }
   }
 
