@@ -2,10 +2,12 @@
 
 import { revalidateTag } from 'next/cache'
 
-import { getCurrentOrg, isAuthenticated } from '@/helpers/auth'
-import { createOrganization, updateOrganization } from '@/http/api'
+import { getCurrentOrg } from '@/helpers/auth'
+import {
+  createOrganization,
+  updateOrganization,
+} from '@/http/organizations/organizations'
 import type { FormState } from '@/types/form'
-import { isHttpError } from '@/utils/is-http-error'
 import {
   type OrganizationFormSchema,
   organizationFormSchema,
