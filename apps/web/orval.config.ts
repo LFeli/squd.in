@@ -21,7 +21,7 @@ export default defineConfig({
     input: 'http://localhost:3333/docs/json',
 
     output: {
-      mode: 'single',
+      mode: 'tags-split',
       baseUrl: 'http://localhost:3333',
 
       target: './src/http/api.ts',

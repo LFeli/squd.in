@@ -10,13 +10,13 @@ import { getCookie } from '@/utils/get-cookie'
  * @template T - Expected type of the response data.
  * @param {RequestInfo} input - URL or Request object.
  * @param {RequestInit} [init={}] - Optional fetch configuration.
- * @returns {Promise<{ data: T }>} A Promise resolving to an object containing the parsed response data.
+ * @returns {Promise<{ data: T, status: number}>} A Promise resolving to an object containing the parsed response data and status.
  *
  */
 export async function fetcher<T>(
   input: RequestInfo,
   init: RequestInit = {}
-): Promise<{ data: T }> {
+): Promise<{ data: T; status: number }> {
   const token = await getCookie('token')
 
   const headers = new Headers(init.headers)
@@ -29,6 +29,7 @@ export async function fetcher<T>(
   const response = await fetch(input, { ...init, headers })
 
   const contentType = response.headers.get('content-type') ?? ''
+  const status = response.status
   const data = contentType.includes('application/json')
     ? await response.json()
     : await response.text()
@@ -37,5 +38,5 @@ export async function fetcher<T>(
     throw new Error()
   }
 
-  return { data: data as T }
+  return { data: data as T, status }
 }
