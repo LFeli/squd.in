@@ -1,25 +1,25 @@
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-import { getMembership, getProfile } from '@/http/api'
 import { defineAbilityFor } from '@squd-in/auth'
 
-export async function isAuthenticated() {
-  const cookie = await cookies()
+import { getProfile } from '@/http/auth/auth'
+import { getMembership } from '@/http/organizations/organizations'
+import { getCookie } from '@/utils/get-cookie'
 
-  return Boolean(cookie.get('token')?.value)
+export async function isAuthenticated() {
+  const token = await getCookie('token')
+
+  return Boolean(token)
 }
 
 export async function getCurrentOrg() {
-  const cookie = await cookies()
-  const org = cookie.get('org')?.value
+  const org = await getCookie('org')
 
-  return org ?? null
+  return org
 }
 
 export async function getCurrentMembership() {
   const org = await getCurrentOrg()
-  const token = await isAuthenticated()
 
   if (!org) {
     return null
@@ -27,9 +27,7 @@ export async function getCurrentMembership() {
 
   const {
     data: { membership },
-  } = await getMembership(org, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
+  } = await getMembership(org)
 
   return membership
 }
@@ -50,8 +48,7 @@ export async function ability() {
 }
 
 export async function authenticateUser() {
-  const cookie = await cookies()
-  const token = cookie.get('token')?.value
+  const token = await getCookie('token')
 
   if (!token) {
     return redirect('/auth/sign-in')
@@ -60,10 +57,10 @@ export async function authenticateUser() {
   try {
     const {
       data: { user },
-    } = await getProfile({ headers: { Authorization: `Bearer ${token}` } })
+    } = await getProfile()
 
     return { user }
   } catch {}
 
-  return redirect('/auth/sign-out')
+  redirect('/api/auth/sign-out')
 }
